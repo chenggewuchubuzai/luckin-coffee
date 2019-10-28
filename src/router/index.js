@@ -30,7 +30,7 @@ const routes = [
     component: Menu
   },
   {
-    path: '/details',
+    path: '/details/:id',
     name: 'Details',
     component: Details,
     meta: {
