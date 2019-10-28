@@ -1,29 +1,33 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <Footer></Footer>
+    <Footer v-if="!$route.meta.isHide"></Footer>
   </div>
 </template>
 
 <script>
-import Footer from '@/components/Footer'
-export default {
-  name: 'App',
-  components: {
-    Footer
+  import Footer from '@/components/Footer'
+  export default {
+    name: 'App',
+    components: {
+      Footer
+    }
   }
-}
 </script>
 
 <style>
-html,
-body,
-#app {
-  width: 100%;
-  height: 100%;
-}
-#app {
-  display: flex;
-  flex-direction: column;
-}
+  html,
+  body,
+  #app {
+    width: 100%;
+    height: 100%;
+  }
+  #app {
+    display: flex;
+    flex-direction: column;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
 </style>

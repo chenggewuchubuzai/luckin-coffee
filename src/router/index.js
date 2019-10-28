@@ -5,12 +5,22 @@ import Menu from '../views/Menu/Menu'
 import Order from '../views/Order/Order'
 import Carts from '../views/Carts/Carts'
 import User from '../views/User/User'
+import Details from '../views/Menu/Details'
+import Welcome from '../views/Welcome/Welcome'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    name: 'Welcome',
+    component: Welcome,
+    meta: {
+      isHide: true
+    }
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -18,6 +28,14 @@ const routes = [
     path: '/menu',
     name: 'Menu',
     component: Menu
+  },
+  {
+    path: '/details',
+    name: 'Details',
+    component: Details,
+    meta: {
+      isHide: true
+    }
   },
   {
     path: '/order',
