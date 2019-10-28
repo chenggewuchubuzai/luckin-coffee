@@ -1,29 +1,38 @@
 <template>
   <div class="carts">
     <h1>购物车</h1>
-    <img class="banner" src="../../../public/images/carts_top.png" alt="" />
+    <img class="banner" src="../../assets/carts_top.png" alt="" />
     <div class="section">
-      <ul>
-        <li v-for="item in list" :key="item.id">{{ item.name }}</li>
-      </ul>
+      <CartsProduct v-if="!isEmpty"></CartsProduct>
+      <Empty v-if="isEmpty"></Empty>
+      <RecommendProduct></RecommendProduct>
+    </div>
+    <div class="sum" v-if="!isEmpty">
+      <div class="total">应付合计：<span class="price">￥21</span></div>
+      <router-link :to="{ name: 'Confirm' }"><span class="toPay">去结算</span></router-link>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import SubmitBar from '@/components/Carts/SubmitBar'
+import CartsProduct from '@/components/Carts/CartsProduct'
+import RecommendProduct from '@/components/Carts/RecommendProduct'
+import Empty from '@/components/Carts/Empty'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Carts',
   components: {
-    SubmitBar
+    CartsProduct,
+    RecommendProduct,
+    Empty
   },
   data() {
     return {
-      list: []
+      isEmpty: false
     }
-  },
-  methods: {}
+  }
 }
 </script>
 
@@ -53,5 +62,30 @@ h1 {
 .section {
   flex: 1;
   overflow: auto;
+}
+.sum {
+  height: 1.2rem;
+  display: flex;
+  line-height: 1.2rem;
+  background: #fff;
+}
+.total {
+  width: 5.12rem;
+  font-size: 0.28rem;
+  margin-left: 0.3rem;
+  font-weight: bold;
+}
+.price {
+  font-size: 0.48rem;
+  color: rgba(56, 56, 56, 1);
+  font-weight: bold;
+}
+.toPay {
+  display: block;
+  width: 2.39rem;
+  background: rgba(144, 192, 239, 1);
+  text-align: center;
+  font-size: 0.32rem;
+  color: #fff;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <Footer></Footer>
+    <Footer v-if="!$route.meta.isHide"></Footer>
   </div>
 </template>
 
@@ -25,5 +25,6 @@ body,
 #app {
   display: flex;
   flex-direction: column;
+  background-color: rgba(248, 248, 248, 1);
 }
 </style>
