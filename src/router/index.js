@@ -5,6 +5,7 @@ import Menu from '../views/Menu/Menu'
 import Order from '../views/Order/Order'
 import Carts from '../views/Carts/Carts'
 import User from '../views/User/User'
+<<<<<<< HEAD
 import Geren from '../views/User/geren'
 import Duihuan from '../views/User/duihuan'
 import Zhanghu from '../views/User/zhanghu.vue'
@@ -14,12 +15,24 @@ import Dingdan from '../views/User/two/dingdan.vue'
 import Qiye from '../views/User/two/qiye.vue'
 import yonghuming from '../views/User/two/yonghuming.vue'
 import test from '../views/User/two/vue.vue'
+=======
+import Details from '../views/Menu/Details'
+import Welcome from '../views/Welcome/Welcome'
+>>>>>>> e293b82c5f32f4b8de867601d60e9e9f08178c2c
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    name: 'Welcome',
+    component: Welcome,
+    meta: {
+      isHide: true
+    }
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -27,6 +40,14 @@ const routes = [
     path: '/menu',
     name: 'Menu',
     component: Menu
+  },
+  {
+    path: '/details',
+    name: 'Details',
+    component: Details,
+    meta: {
+      isHide: true
+    }
   },
   {
     path: '/order',

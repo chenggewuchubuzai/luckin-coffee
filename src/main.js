@@ -10,6 +10,7 @@ import store from './store'
 
 Vue.use(Vant)
 Vue.use(VueRouter)
+
 Vue.use(Vuex)
 Vue.config.productionTip = false
 
