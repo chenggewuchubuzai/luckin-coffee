@@ -23,6 +23,6 @@ export default {
 
 <style scoped>
 .footer {
-  height: 1.1rem;
+  height: 1rem;
 }
 </style>
