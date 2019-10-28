@@ -1,0 +1,203 @@
+<template>
+  <div class="ge">
+    <van-row type="flex" justify="center" class="top">
+      <van-col span="6" class>
+        <img src="../../assets/jiantou.svg" alt class="jian" @click="geren()" />
+      </van-col>
+      <van-col span="6">个人资料</van-col>
+      <van-col span="6"></van-col>
+    </van-row>
+    <div class="centers">
+      <div class="center">
+        <span>头像</span>
+        <div>
+          <img src="../../assets/logo1.jpg" alt class="logo" />
+          <img src="../../assets/jiantou.svg" alt class="jiantou" />
+        </div>
+      </div>
+      <ul>
+        <li @click="yonghuming">
+          <span>用户名</span>
+          <div>
+            <span>{{value}}</span>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <li @click="show=true">
+          <span>性别</span>
+          <div>
+            <span>{{res}}</span>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+            <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
+          </div>
+        </li>
+        <li>
+          <span>绑定手机</span>
+          <div>
+            <span>18339738601</span>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <li @click="weixin">
+          <span>绑定微信</span>
+
+          <div>
+            <span>{{wei}}</span>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <li>
+          <span>国际信用卡绑定</span>
+          <div>
+            <span>已绑定</span>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <li class="shou">
+          <span>收货地址</span>
+          <div>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <li>
+          <span>多语言</span>
+          <div>
+            <span>简体中文</span>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <li>
+          <span>推送通知</span>
+          <div>
+            <span>已开启</span>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <li>
+          <span>注销账号</span>
+          <div>
+            <img src="../../assets/jiantou.svg" alt class="jiantou" />
+          </div>
+        </li>
+        <van-button type="primary" class="btn">退出登录</van-button>
+      </ul>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      show: false,
+      actions: [{ name: '男' }, { name: '女' }, { name: '取消' }],
+      res: '',
+      value: this.$route.query.t,
+      wei: ''
+    }
+  },
+  methods: {
+    geren() {
+      this.$router.go(-1)
+    },
+    yonghuming() {
+      this.$router.push('/geren/yonghuming')
+    },
+    // 这个是选择男女的
+    onSelect(item) {
+      // 默认情况下，点击选项时不会自动关闭菜单
+      // 可以通过 close-on-click-action 属性开启自动关闭
+      this.show = false
+      console.log(item)
+      //   Toast(item.name)
+      if (item.name == '取消') {
+      } else {
+        this.res = item.name
+      }
+    },
+    // 绑定微信
+    weixin() {
+      this.$dialog
+        .confirm({
+          message: '确定要绑定微信吗'
+        })
+        .then(() => {
+          this.wei = '已绑定'
+        })
+    }
+  }
+}
+</script>
+<style scoped>
+html,
+body,
+.user {
+  width: 100%;
+  height: 100%;
+}
+.ge {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.jian {
+  width: 0.38rem;
+  height: 0.38rem;
+  margin-right: 0.3rem;
+}
+.top {
+  width: 100%;
+  height: 1.1rem;
+
+  font-size: 0.3rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.15rem solid #ccc;
+}
+.center {
+  height: 1.5rem;
+  padding-left: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.25rem;
+}
+.logo {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+.jiantou {
+  width: 0.38rem;
+  height: 0.38rem;
+  margin-right: 0.3rem;
+}
+ul {
+  height: 9rem;
+
+  padding-left: 0.2rem;
+}
+li {
+  height: 1.1rem;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.25rem;
+}
+.centers {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+}
+.btn {
+  margin: 0.5rem;
+  height: 1rem;
+  display: block;
+  width: 80%;
+  font-size: 0.25rem;
+}
+.shou {
+  border-bottom: 0.1rem solid #ccc;
+}
+</style>
