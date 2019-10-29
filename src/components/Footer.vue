@@ -30,4 +30,7 @@ export default {
 .footer {
   height: 1rem;
 }
+.van-tabbar {
+  height: 1rem;
+}
 </style>
