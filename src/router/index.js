@@ -11,7 +11,6 @@ import PayCenter from '../views/Carts/PayCenter'
 import TakeFood from '../views/Carts/TakeFood'
 import Cancel from '../views/Carts/Cancel'
 import User from '../views/User/User'
-<<<<<<< HEAD
 import Geren from '../views/User/geren'
 import Duihuan from '../views/User/duihuan'
 import Zhanghu from '../views/User/zhanghu.vue'
@@ -21,10 +20,8 @@ import Dingdan from '../views/User/two/dingdan.vue'
 import Qiye from '../views/User/two/qiye.vue'
 import yonghuming from '../views/User/two/yonghuming.vue'
 import test from '../views/User/two/vue.vue'
-=======
 import Details from '../views/Menu/Details'
 import Welcome from '../views/Welcome/Welcome'
->>>>>>> e293b82c5f32f4b8de867601d60e9e9f08178c2c
 
 Vue.use(VueRouter)
 
@@ -140,8 +137,7 @@ const routes = [
   {
     path: '/user',
     name: 'User',
-    component: User,
-
+    component: User
   },
   {
     path: '/geren',
@@ -158,50 +154,51 @@ const routes = [
     meta: {
       isHide: true
     }
-  }, {
+  },
+  {
     path: '/zhanghu',
     name: 'Zhanghu',
     component: Zhanghu,
     meta: {
       isHide: true
     }
-  }, {
+  },
+  {
     path: '/coffer',
     name: 'Coffer',
     component: Coffer,
     meta: {
       isHide: true
     }
-  }, {
+  },
+  {
     path: '/fapiao',
     name: 'Fapiao',
     component: Fapiao,
     meta: {
-      isHide: true,
+      isHide: true
     }
   },
   {
     path: '/dingdan',
     name: 'Dingdan',
-    component: Dingdan,
+    component: Dingdan
   },
   {
     path: '/qiye',
     name: 'Qiye',
-    component: Qiye,
-  }, {
+    component: Qiye
+  },
+  {
     path: '/geren/yonghuming',
     name: 'yonghuming',
-    component: yonghuming,
-  }, {
+    component: yonghuming
+  },
+  {
     path: '/ge',
     name: 'y',
-    component: test,
+    component: test
   }
-
-
-
-
 ]
 
 const router = new VueRouter({
