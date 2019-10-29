@@ -2,7 +2,7 @@ export default {
   namespaced: 'true',
   state: {
     cartsList: [
-      {
+      /* {
         id: 1,
         name: '标准美式',
         desc: '大/单份奶/单份糖/热',
@@ -22,15 +22,18 @@ export default {
         desc: '大/单份奶/单份糖/热',
         price: '24',
         num: 4
-      }
+      } */
     ]
   },
   mutations: {
     save(state, payload) {
-      state.list = payload.list
+      state.cartsList = payload.list
     }
   },
   actions: {
-    async loadData({ commit }, payload) {}
+    async loadData({ commit }, payload) {
+      const result = await cartsProducts()
+      console.log(result)
+    }
   }
 }

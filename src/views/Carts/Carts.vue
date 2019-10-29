@@ -19,7 +19,6 @@
 import CartsProduct from '@/components/Carts/CartsProduct'
 import RecommendProduct from '@/components/Carts/RecommendProduct'
 import Empty from '@/components/Carts/Empty'
-import { mapState } from 'vuex'
 
 export default {
   name: 'Carts',

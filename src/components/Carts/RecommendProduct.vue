@@ -13,7 +13,7 @@
           <div class="price">
             <span class="current-price">￥25.58</span>
             <span style="text-decoration:line-through" class="origin-price">￥38.00</span>
-            <img id="add" src="../../assets/add.svg" alt="" />
+            <div @click="addHandle(item)"><img id="add" src="../../assets/add.svg" alt="" /></div>
           </div>
         </dt>
       </dl>
@@ -23,12 +23,20 @@
 
 <script>
 import { mapState } from 'vuex'
+import { addToCarts } from '../../api/product'
+import { getToken } from '../../utils/token'
+
 export default {
   name: 'RecommendProduct',
   computed: {
     ...mapState('loveProducts', ['loveList'])
   },
-  methods: {}
+  methods: {
+    async addHandle(item) {
+      const result = await addToCarts(item)
+      console.log(result)
+    }
+  }
 }
 </script>
 

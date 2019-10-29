@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="orderInfo">
-      <div class="box">
+      <div class="addressInfo">
         <div class="address">
           <p>配送信息</p>
           <p><img src="../../assets/icon1.svg" alt="" />北京时朝阳区青年汇佳园10号楼102...</p>
@@ -89,7 +89,7 @@ export default {
   margin: 0.2rem 0;
   background: #fff;
 }
-.box {
+.addressInfo {
   display: flex;
   justify-content: space-between;
   height: 1.4rem;

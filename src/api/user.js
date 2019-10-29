@@ -1,8 +1,8 @@
 import { get, post, put, del } from '../utils/request'
 
 //用户注册
-export const login = params => {
-  return post('/api/v1/auth/login', params)
+export const login = user => {
+  return post('/api/v1/auth/login', user)
 }
 
 //用户登录
