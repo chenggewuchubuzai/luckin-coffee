@@ -17,9 +17,9 @@ export const cartsProducts = () => {
 }
 
 //添加商品到购物车
-export const addToCarts = item => {
+export const addToCarts = id => {
   return post('/api/v1/shop_carts', {
-    product: item.id
+    product: id
   })
 }
 

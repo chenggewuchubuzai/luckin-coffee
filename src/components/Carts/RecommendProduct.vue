@@ -13,7 +13,7 @@
           <div class="price">
             <span class="current-price">{{ item.price }}</span>
             <span style="text-decoration:line-through" class="origin-price">￥38.00</span>
-            <div @click="addHandle(item)"><img id="add" src="../../assets/add.svg" alt="" /></div>
+            <div @click="addHandle(item._id)"><img id="add" src="../../assets/add.svg" alt="" /></div>
           </div>
         </dt>
       </dl>
@@ -38,27 +38,11 @@ export default {
   methods: {
     ...mapActions('loveProducts', ['loadData']),
     ...mapActions('cartsProducts', ['loadCartData']),
-    /*  async addHandle(item) {
-      console.log(getToken())
-      const result = await addToCarts(item)
+    async addHandle(id) {
+      // console.log(getToken())
+      const result = await addToCarts(id)
       console.log(result)
-    }, */
-    addHandle(item) {
-      axios
-        .post(
-          'http://localhost:3000/api/v1/shop_carts',
-          {
-            product: item._id
-          },
-          {
-            headers: {
-              authorization: `Bearer ${getToken()}`
-            }
-          }
-        )
-        .then(res => {
-          this.loadCartData()
-        })
+      this.loadCartData()
     }
   }
 }

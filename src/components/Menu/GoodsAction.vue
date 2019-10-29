@@ -8,8 +8,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import axios from 'axios'
-import { getToken } from '../../utils/token'
+import { addToCarts } from '../../api/product'
 
 export default {
   props: ['proId'],
@@ -18,27 +17,14 @@ export default {
     onClickButton() {
       this.$router.push('/confirm')
     },
-    onClickButton2(id) {
-      // console.log(id)
-      axios
-        .post(
-          'http://localhost:3000/api/v1/shop_carts',
-          {
-            product: id
-          },
-          {
-            headers: {
-              authorization: `Bearer ${getToken()}`
-            }
-          }
-        )
-        .then(res => {
-          this.loadCartData(),
-            this.$toast({
-              message: '添加购物车成功'
-            }),
-            this.$router.push({ name: 'Carts' })
-        })
+    async onClickButton2(id) {
+      const result = await addToCarts(id)
+      // console.log(result)
+      this.loadCartData()
+      this.$toast({
+        message: '添加购物车成功'
+      }),
+        this.$router.push({ name: 'Carts' })
     }
   }
 }
