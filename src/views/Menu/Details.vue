@@ -5,7 +5,7 @@
         <van-icon name="arrow-left" size=20px class="back" @click="Back"/>
     </div>
     <div class="dec">
-        <h1>{标准美式}</h1>
+        <h1>{{goods.name}}</h1>
         <ul>
             <li><em>规格</em><button  :class="[checkColor1===1?'check':'old']" @click='check(1)'>大</button></li>
             <li><em>温度</em><button  :class="[checkColor2===1?'check':'old']" @click='check2(1)'>冰</button><button :class="[checkColor2===2?'check':'old']" @click='check2(2)'>热</button></li>
@@ -18,12 +18,11 @@
         <div class="dks-2"> 
              <dl>
                  <dt style="float: left;margin-right:0.2rem;width: 0.5rem;height: 0.5rem;border-radius:50%;overflow: hidden;">
-                   <img  src="../../assets/v-banner4.jpg" alt="">
+                   <img  src="../../assets/v-banner3.jpg" alt="">
                   </dt>
                  <dd  style="font-size: 0.24rem;">井崎英典<span>WBC世界冠军</span></dd>
                  <dd class="dd-2">一颗阿拉比卡豆，走下哥伦比亚山后的每个环节，我都要亲手控制，仔细甄别，知道捕捉到他柔软细腻的风味 </dd>
-                 
-                 
+
              </dl>
             </div>
         
@@ -39,8 +38,8 @@
     <!-- <div style="height:100px"></div> -->
     </div>
     <div class="pri">
-        <h2>￥{21}</h2>
-        <p>{标准美式}￥{21} + {无糖} ￥0 + 无奶 ￥0</p>
+        <h2>￥{{goods.name}}</h2>
+        <p>{{goods.name}}￥{{goods.price}} + {无糖} ￥0 + 无奶 ￥0</p>
         <van-stepper v-model="value" style="float: right;margin-top:-0.8rem ;" />
   
       </div>
@@ -49,6 +48,7 @@
   
 </template>
 <script>
+  import{getProductById} from '../../api/product.js'
    import GoodsAction from '../../components/Menu/GoodsAction'
 export default{
   components:{GoodsAction},
@@ -59,13 +59,23 @@ export default{
       checkColor2:0,
       checkColor3:0,
       checkColor4:0,
+      goods:{
+        name:'',
+        price:''
+      }
 
 
       
 
     }
   },
+  async created() {
+    let id =this.$route.params.id
+    console.log(id)
+    let result=await getProductById(id)
   
+    this.goods=result.data.products   
+  },
     name:'Details',
     methods: {
       Back(){
@@ -100,6 +110,7 @@ export default{
       
       
     },
+
 }
 </script>
 

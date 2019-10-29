@@ -11,14 +11,14 @@
           <template slot="content" class="content">
             <div v-if="activeIndex === 0">
               <ul style="height: 200px;">
-                <li v-for='(goods,index) in list' :key='goods._id'>
+                <li v-for="(goods,index) in list" :key="goods._id" @click="go(goods._id)">
                   <van-card
                     :id="goods._id"
                     :price="goods.price"
                     :desc="goods.content"
                     :title="goods.name"
                     thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    :thumb-link="`#/details/${goods._id}`">
+                    ></van-card>
                     <div slot="footer" >
                       <van-icon size=0.44rem name="add"/>
                     </div>
@@ -28,14 +28,14 @@
             </div>
             <div v-if="activeIndex === 1">
               <ul>
-                  <li v-for='(goods,index) in list2' :key='index'>
+                  <li v-for='(goods,index) in list2' :key='index' @click="go(goods._id)">
                       <van-card
                         
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
                         thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                        :thumb-link="`#/details/${goods._id}`">
+                        ></van-card>
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
                         </div>
@@ -45,14 +45,14 @@
             </div>
             <div v-if="activeIndex === 2">
               <ul>
-                  <li v-for='(goods,index) in list3' :key='index'>
+                  <li v-for='(goods,index) in list3' :key='index' @click="go(goods._id)">
                       <van-card
                         
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
                         thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                        :thumb-link="`#/details/${goods._id}`">
+                       >
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
                         </div>
@@ -62,14 +62,13 @@
             </div>
             <div v-if="activeIndex === 3">
               <ul>
-                  <li v-for='(goods,index) in list4' :key='index'>
+                  <li v-for='(goods,index) in list4' :key='index' @click="go(goods._id)">
                       <van-card
-                        
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
                         thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                        :thumb-link="`#/details/${goods._id}`">
+                        >
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
                         </div>
@@ -79,14 +78,14 @@
             </div>
             <div v-if="activeIndex === 4">
               <ul>
-                  <li v-for='(goods,index) in list5' :key='index'>
+                  <li v-for="(goods,index) in list5" :key="index" @click="go(goods._id)">
                       <van-card
                         :id="goods._id"
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
                         thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                        :thumb-link="`#/details/${goods._id}`">
+                        >
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
                         </div>
@@ -158,6 +157,9 @@
       AddCar(){
         alert('加入购物车')
       },
+      go(id){
+        this.$router.push({name:'Details',params:{id}})
+      }
     },
     
   }
