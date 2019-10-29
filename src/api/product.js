@@ -2,12 +2,12 @@ import { get, post, put, del } from '../utils/request'
 
 //获取商品信息
 export const products = params => {
-  return get('api/v1/products', params)
+  return get('/api/v1/products', params)
 }
 
 //根据id获取商品详情
 export const getProductById = id => {
-  return get(`api/v1/products${id}`)
+  return get(`/api/v1/products/${id}`)
 }
 
 //获取购物车数据
@@ -17,7 +17,17 @@ export const cartsProducts = () => {
 
 //添加商品到购物车
 export const addToCarts = product => {
-  return post('/api/v1/shop_carts', product)
+  return post(
+    '/api/v1/shop_carts',
+    {
+      product: product._id
+    },
+    {
+      headers: {
+        authorization: `Bearer ${getToken()}`
+      }
+    }
+  )
 }
 
 //删除购物车中商品
