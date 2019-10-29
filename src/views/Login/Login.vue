@@ -14,7 +14,7 @@
 
 <script>
 import { login } from '../../api/user'
-import { setToken } from '../../utils/token'
+import { setToken, getToken } from '../../utils/token'
 import { Dialog } from 'vant'
 
 export default {
@@ -33,6 +33,7 @@ export default {
       if (result.data.code === 'success') {
         this.$router.push({ name: 'Home' })
         setToken(result.data.token)
+        console.log(getToken())
       } else {
         Dialog.alert({
           message: '请输入正确的用户名和密码'

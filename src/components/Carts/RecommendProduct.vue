@@ -8,10 +8,10 @@
       <dl v-for="item in loveList" :key="item.id">
         <dd><img src="../../assets/carts_love.png" alt="" /></dd>
         <dt>
-          <h3>金枪鱼谷物沙拉</h3>
+          <h3>{{ item.name }}</h3>
           <p>Tuna and Mixed Gr...</p>
           <div class="price">
-            <span class="current-price">￥25.58</span>
+            <span class="current-price">{{ item.price }}</span>
             <span style="text-decoration:line-through" class="origin-price">￥38.00</span>
             <div @click="addHandle(item)"><img id="add" src="../../assets/add.svg" alt="" /></div>
           </div>
@@ -22,19 +22,43 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { addToCarts } from '../../api/product'
+import { mapState, mapActions } from 'vuex'
+import { addToCarts, products } from '../../api/product'
 import { getToken } from '../../utils/token'
+import axios from 'axios'
 
 export default {
   name: 'RecommendProduct',
   computed: {
     ...mapState('loveProducts', ['loveList'])
   },
+  created() {
+    this.loadData()
+  },
   methods: {
-    async addHandle(item) {
+    ...mapActions('loveProducts', ['loadData']),
+    ...mapActions('cartsProducts', ['loadCartData']),
+    /*  async addHandle(item) {
+      console.log(getToken())
       const result = await addToCarts(item)
       console.log(result)
+    }, */
+    addHandle(item) {
+      axios
+        .post(
+          'http://localhost:3000/api/v1/shop_carts',
+          {
+            product: item._id
+          },
+          {
+            headers: {
+              authorization: `Bearer ${getToken()}`
+            }
+          }
+        )
+        .then(res => {
+          this.loadCartData()
+        })
     }
   }
 }
