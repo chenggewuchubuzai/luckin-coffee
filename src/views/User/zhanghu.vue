@@ -4,12 +4,12 @@
       <van-nav-bar title="账户余额" right-text="余额明细" left-arrow @click-left="onClickLeft" />
     </div>
     <div class="two">
-      <h1>{{sss}}元</h1>
-      <p>总余额</p>
+      <p>总余额{{sss}}</p>
     </div>
     <div class="ke">
       <div class="k-left">
         <p>{{sss}}</p>
+
         <p>可用余额（元）</p>
       </div>
       <div class="k-right">

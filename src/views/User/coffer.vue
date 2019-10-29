@@ -21,7 +21,7 @@
     <div class="btn">
       <van-button plain type="primary" @click="happy">幸运送</van-button>
       <van-button plain type="primary" @click="happy">发红包</van-button>
-      <van-button type="info" info="1">充值钱包</van-button>
+      <van-button type="info" info="1" @click="cofferchong">充值钱包</van-button>
     </div>
   </div>
 </template>
@@ -36,6 +36,9 @@ export default {
       this.$dialog.alert({
         message: '此功能暂未开发'
       })
+    },
+    cofferchong() {
+      this.$router.push('/cofferchong')
     }
   }
 }

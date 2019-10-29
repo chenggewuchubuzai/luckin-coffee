@@ -25,5 +25,6 @@ body,
 #app {
   display: flex;
   flex-direction: column;
+  background-color: rgba(248, 248, 248, 1);
 }
 </style>
