@@ -5,6 +5,18 @@ import Menu from '../views/Menu/Menu'
 import Order from '../views/Order/Order'
 import Carts from '../views/Carts/Carts'
 import User from '../views/User/User'
+import Geren from '../views/User/geren'
+import Duihuan from '../views/User/duihuan'
+import Zhanghu from '../views/User/zhanghu.vue'
+import Coffer from '../views/User/coffer.vue'
+import Fapiao from '../views/User/fapiao.vue'
+import Dingdan from '../views/User/two/dingdan.vue'
+import Qiye from '../views/User/two/qiye.vue'
+import yonghuming from '../views/User/two/yonghuming.vue'
+import test from '../views/User/two/vue.vue'
+import Erweima from '../views/User/two/three/erweima.vue'
+import cos from '../views/User/two/three/v.vue'
+import Cofferchong from '../views/User/two/three/cofferchong.vue'
 
 Vue.use(VueRouter)
 
@@ -32,8 +44,83 @@ const routes = [
   {
     path: '/user',
     name: 'User',
-    component: User
+    component: User,
+
+  },
+  {
+    path: '/geren',
+    name: 'Geren',
+    component: Geren,
+    meta: {
+      isHide: true
+    }
+  },
+  {
+    path: '/duihuan',
+    name: 'Duihuan',
+    component: Duihuan,
+    meta: {
+      isHide: true
+    }
+  }, {
+    path: '/zhanghu',
+    name: 'Zhanghu',
+    component: Zhanghu,
+    meta: {
+      isHide: true
+    }
+  }, {
+    path: '/coffer',
+    name: 'Coffer',
+    component: Coffer,
+    meta: {
+      isHide: true
+    }
+  }, {
+    path: '/fapiao',
+    name: 'Fapiao',
+    component: Fapiao,
+    meta: {
+      isHide: true,
+    }
+  },
+  {
+    path: '/dingdan',
+    name: 'Dingdan',
+    component: Dingdan,
+  },
+  {
+    path: '/qiye',
+    name: 'Qiye',
+    component: Qiye,
+  }, {
+    path: '/geren/yonghuming',
+    name: 'yonghuming',
+    component: yonghuming,
+  }, {
+    path: '/ge',
+    name: 'y',
+    component: test,
+  }, {
+    path: '/coffer/erweima',
+    name: 'Erweima',
+    component: Erweima,
+  }, {
+    path: '/cos',
+    name: 'Erweima',
+    component: cos,
+  }, {
+    path: '/cofferchong',
+    name: 'Cofferchong',
+    component: Cofferchong,
+    meta: {
+      isHide: true,
+    }
   }
+
+
+
+
 ]
 
 const router = new VueRouter({
