@@ -2,14 +2,18 @@
   <div class="love">
     <h2>
       <span class="left">猜你喜欢</span>
-      <div class="right"><img src="../../assets/carts_icon.svg" alt="" /> <span>换一批</span></div>
+      <div class="right" @click="loadData(page)">
+        <img src="../../assets/carts_icon.svg" alt="" /> <span>换一批</span>
+      </div>
     </h2>
     <div class="list">
-      <dl v-for="item in loveList" :key="item.id">
-        <dd><img src="../../assets/carts_love.png" alt="" /></dd>
+      <dl v-for="item in loveList" :key="item._id">
+        <router-link :to="{ name: 'Details', params: { id: item._id } }">
+          <dd><img :src="item.coverImg" alt="" /></dd
+        ></router-link>
         <dt>
           <h3>{{ item.name }}</h3>
-          <p>Tuna and Mixed Gr...</p>
+          <p>luckin coffee</p>
           <div class="price">
             <span class="current-price">{{ item.price }}</span>
             <span style="text-decoration:line-through" class="origin-price">￥38.00</span>
@@ -23,17 +27,15 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { addToCarts, products } from '../../api/product'
-import { getToken } from '../../utils/token'
-import axios from 'axios'
+import { addToCarts } from '../../api/product'
 
 export default {
   name: 'RecommendProduct',
   computed: {
-    ...mapState('loveProducts', ['loveList'])
+    ...mapState('loveProducts', ['loveList', 'page'])
   },
   created() {
-    this.loadData()
+    this.loadData(this.page)
   },
   methods: {
     ...mapActions('loveProducts', ['loadData']),
@@ -41,7 +43,7 @@ export default {
     async addHandle(id) {
       // console.log(getToken())
       const result = await addToCarts(id)
-      console.log(result)
+      // console.log(result)
       this.loadCartData()
     }
   }

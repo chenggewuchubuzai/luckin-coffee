@@ -29,11 +29,11 @@ export default {
     async loginHandle() {
       const user = { userName: this.username, password: this.password }
       const result = await login(user)
-      console.log(result.data)
+      // console.log(result.data)
       if (result.data.code === 'success') {
         this.$router.push({ name: 'Home' })
         setToken(result.data.token)
-        console.log(getToken())
+        // console.log(getToken())
       } else {
         Dialog.alert({
           message: '请输入正确的用户名和密码'

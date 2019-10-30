@@ -20,7 +20,7 @@ export default {
     async onClickButton2(id) {
       const result = await addToCarts(id)
       // console.log(result)
-      this.loadCartData()
+      console.log(id)
       this.$toast({
         message: '添加购物车成功'
       }),

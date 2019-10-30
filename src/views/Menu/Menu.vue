@@ -17,7 +17,7 @@
                   :price="goods.price"
                   :desc="goods.content"
                   :title="goods.name"
-                  thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
+                  :thumb="goods.coverImg"
                 ></van-card>
                 <div slot="footer">
                   <van-icon size="0.44rem" name="add" />
@@ -32,7 +32,7 @@
                   :price="goods.price"
                   :desc="goods.content"
                   :title="goods.name"
-                  thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
+                  :thumb="goods.coverImg"
                 ></van-card>
                 <div slot="footer">
                   <van-icon size="0.44rem" name="add" />
@@ -43,12 +43,7 @@
           <div v-if="activeIndex === 2">
             <ul>
               <li v-for="(goods, index) in list3" :key="index" @click="go(goods._id)">
-                <van-card
-                  :price="goods.price"
-                  :desc="goods.content"
-                  :title="goods.name"
-                  thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                >
+                <van-card :price="goods.price" :desc="goods.content" :title="goods.name" thumb="goods.coverImg">
                   <div slot="footer">
                     <van-icon size="0.44rem" name="add" />
                   </div>
@@ -59,12 +54,7 @@
           <div v-if="activeIndex === 3">
             <ul>
               <li v-for="(goods, index) in list4" :key="index" @click="go(goods._id)">
-                <van-card
-                  :price="goods.price"
-                  :desc="goods.content"
-                  :title="goods.name"
-                  thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                >
+                <van-card :price="goods.price" :desc="goods.content" :title="goods.name" thumb="goods.coverImg">
                   <div slot="footer">
                     <van-icon size="0.44rem" name="add" />
                   </div>
@@ -80,7 +70,7 @@
                   :price="goods.price"
                   :desc="goods.content"
                   :title="goods.name"
-                  thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
+                  :thumb="goods.coverImg"
                 >
                   <div slot="footer">
                     <van-icon size="0.44rem" name="add" />

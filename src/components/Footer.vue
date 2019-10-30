@@ -12,6 +12,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { getToken } from '../utils/token'
 
 export default {
   name: 'Footer',
@@ -27,7 +28,9 @@ export default {
     ...mapActions('cartsProducts', ['loadCartData'])
   },
   created() {
-    this.loadCartData()
+    if (getToken()) {
+      this.loadCartData()
+    }
   }
 }
 </script>

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getToken } from '../utils/token'
 
 const service = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://39.106.231.90:3000',
   timeout: 5000
 })
 
