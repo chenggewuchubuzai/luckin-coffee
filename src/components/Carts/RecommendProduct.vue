@@ -2,18 +2,22 @@
   <div class="love">
     <h2>
       <span class="left">猜你喜欢</span>
-      <div class="right"><img src="../../assets/carts_icon.svg" alt="" /> <span>换一批</span></div>
+      <div class="right" @click="loadData(page)">
+        <img src="../../assets/carts_icon.svg" alt="" /> <span>换一批</span>
+      </div>
     </h2>
     <div class="list">
-      <dl v-for="item in loveList" :key="item.id">
-        <dd><img src="../../assets/carts_love.png" alt="" /></dd>
+      <dl v-for="item in loveList" :key="item._id">
+        <router-link :to="{ name: 'Details', params: { id: item._id } }">
+          <dd><img :src="item.coverImg" alt="" /></dd
+        ></router-link>
         <dt>
-          <h3>金枪鱼谷物沙拉</h3>
-          <p>Tuna and Mixed Gr...</p>
+          <h3>{{ item.name }}</h3>
+          <p>luckin coffee</p>
           <div class="price">
-            <span class="current-price">￥25.58</span>
+            <span class="current-price">{{ item.price }}</span>
             <span style="text-decoration:line-through" class="origin-price">￥38.00</span>
-            <div @click="addHandle(item)"><img id="add" src="../../assets/add.svg" alt="" /></div>
+            <div @click="addHandle(item._id)"><img id="add" src="../../assets/add.svg" alt="" /></div>
           </div>
         </dt>
       </dl>
@@ -22,19 +26,25 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { addToCarts } from '../../api/product'
-import { getToken } from '../../utils/token'
 
 export default {
   name: 'RecommendProduct',
   computed: {
-    ...mapState('loveProducts', ['loveList'])
+    ...mapState('loveProducts', ['loveList', 'page'])
+  },
+  created() {
+    this.loadData(this.page)
   },
   methods: {
-    async addHandle(item) {
-      const result = await addToCarts(item)
-      console.log(result)
+    ...mapActions('loveProducts', ['loadData']),
+    ...mapActions('cartsProducts', ['loadCartData']),
+    async addHandle(id) {
+      // console.log(getToken())
+      const result = await addToCarts(id)
+      // console.log(result)
+      this.loadCartData()
     }
   }
 }

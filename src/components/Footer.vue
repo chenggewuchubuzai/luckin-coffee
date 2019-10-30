@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import { getToken } from '../utils/token'
 
 export default {
   name: 'Footer',
@@ -22,12 +23,23 @@ export default {
   },
   computed: {
     ...mapState('cartsProducts', ['cartsList'])
+  },
+  methods: {
+    ...mapActions('cartsProducts', ['loadCartData'])
+  },
+  created() {
+    if (getToken()) {
+      this.loadCartData()
+    }
   }
 }
 </script>
 
 <style scoped>
 .footer {
+  height: 1rem;
+}
+.van-tabbar {
   height: 1rem;
 }
 </style>

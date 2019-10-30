@@ -1,4 +1,5 @@
 import { get, post, put, del } from '../utils/request'
+import { getToken } from '../utils/token'
 
 //获取商品信息
 export const products = params => {
@@ -16,21 +17,14 @@ export const cartsProducts = () => {
 }
 
 //添加商品到购物车
-export const addToCarts = product => {
-  return post(
-    '/api/v1/shop_carts',
-    {
-      product: product._id
-    },
-    {
-      headers: {
-        authorization: `Bearer ${getToken()}`
-      }
-    }
-  )
+export const addToCarts = (id, num) => {
+  return post('/api/v1/shop_carts', {
+    product: id,
+    quantity: num
+  })
 }
 
 //删除购物车中商品
 export const delCartsProduct = id => {
-  return del(`/api/v1/shop_carts${id}`)
+  return del(`/api/v1/shop_carts/${id}`)
 }
