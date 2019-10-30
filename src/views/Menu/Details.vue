@@ -1,11 +1,11 @@
 <template>
   <div class="detailss">
     <div class="section">
-      <div class="pic"><img src="../../assets/v-banner3.jpg" alt="" />
+      <div class="pic"><img :src="goods.coverImg" alt="" />
         <van-icon name="arrow-left" size=20px class="back" @click="Back"/>
     </div>
     <div class="dec">
-        <h1>{{goods.name}}</h1>
+        <h1 style="margin-left: 0.3rem;">{{goods.name}}</h1>
         <p>{{goods.content}}</p>
         <ul>
             <li><em>规格</em><button  :class="[checkColor1===1?'check':'old']" @click='check(1)'>大</button></li>
@@ -29,10 +29,8 @@
         
     </div>
     <div class="he">
-      <h3 style="margin:0.2rem ;">商品详情</h3>
-      <p style="font-size: 0.3rem;text-indent:2em">焦糖风味糖浆的融入，提升了美式的原始风味，入口清甜，香气四溢。
-        主要原材料：浓缩咖啡，水，焦糖风味糖浆。
-        图片仅供参考，请以实物为准。建议送达后尽快饮用。</p>
+      <h3 style="margin:0.1rem ;">商品详情</h3>
+      <p style="font-size: 0.28rem;text-indent:2em;">{{goods.descriptions}}</p>
     </div>
     
    
@@ -63,7 +61,8 @@ export default{
       checkColor4:0,
       goods:{
         name:'',
-        price:''
+        price:'',
+        descriptions:''
       }
 
 
@@ -135,6 +134,7 @@ export default{
   
   .pic img {
     width: 100%;
+    height: 4rem;
     position: relative;
   }
   .back{
@@ -146,6 +146,10 @@ export default{
     padding-bottom:0.2rem ;
     border-bottom:0.02rem solid rgba(242, 242, 242, 1) ;
     background: #fff;
+  }
+  .dec h1{
+    font-size:0.4rem ;
+    font-weight: 400;
   }
   .dec button{
    
@@ -169,7 +173,7 @@ export default{
   .dks{
       height: 1.5rem;
       background: #fff;
-      margin: 0.2rem;
+      margin-top: 0.1rem;
   }
   .dks h2{
     font-size: 0.26rem;
@@ -177,13 +181,14 @@ export default{
   }
   .he{
       height: 200px;
-      background: red;
+      background: #fff;
       
 
   }
   .dd-2{
     padding-left:0.7rem ;
   }
+  
 
   .dks-2 span{
     margin-left:0.3rem ;

@@ -17,8 +17,8 @@
                     :price="goods.price"
                     :desc="goods.content"
                     :title="goods.name"
-                    thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    ></van-card>
+                    :thumb="goods.coverImg"
+                    >
                     <div slot="footer" >
                       <van-icon size=0.44rem name="add"/>
                     </div>
@@ -34,8 +34,8 @@
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
-                        thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                        ></van-card>
+                        :thumb="goods.coverImg"
+                        >
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
                         </div>
@@ -51,7 +51,7 @@
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
-                        thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
+                        :thumb="goods.coverImg"
                        >
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
@@ -67,7 +67,7 @@
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
-                        thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
+                        :thumb="goods.coverImg"
                         >
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
@@ -84,7 +84,7 @@
                         :price="goods.price"
                         :desc="goods.content"
                         :title="goods.name"
-                        thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
+                        :thumb="goods.coverImg"
                         >
                         <div slot="footer" >
                           <van-icon size=0.44rem name="add"/>
@@ -134,19 +134,23 @@
       
     },
     async created(){
-      let result=await products({page:1,per:5})
+      let result=await products({page:1,per:2})
       this.result=result.data.products
+
       this.list=this.result
-      let result2=await products({page:2,per:5})
+      let result2=await products({page:2,per:3})
+
       this.result2=result2.data.products
       this.list2=this.result2
+
       let result3=await products({page:3,per:5})
       this.result3=result3.data.products
       this.list3=this.result3
-      let result4=await products({page:4,per:5})
+      
+      let result4=await products({page:4,per:4})
       this.result4=result4.data.products
       this.list4=this.result4
-      let result5=await products({page:5,per:5})
+      let result5=await products({page:5,per:3})
       this.result5=result5.data.products
       this.list5=this.result5
     },

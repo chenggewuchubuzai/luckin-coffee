@@ -17,10 +17,11 @@
       this.$router.push('/confirm')
     },
     
-    onClickButton2() {
+    onClickButton2(i) {
       this.$toast({
         message:'添加购物车成功'
 })
+   
     }
   }
 }
