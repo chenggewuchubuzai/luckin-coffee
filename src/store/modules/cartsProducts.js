@@ -4,18 +4,29 @@ export default {
   namespaced: 'true',
   state: {
     cartsList: [],
-    total: 0
+    total: 0,
+    num: 0,
+    buyArr: []
   },
   mutations: {
     save(state, payload) {
       state.cartsList = payload
       // console.log(payload)
+      // console.log(payload.length)
+      state.num = 0
+      for (let i = 0; i < payload.length; i++) {
+        state.num += payload[i].quantity
+      }
+      // console.log(state.num)
     },
-    addCount(state, payload) {
-      state.total += payload.product.price * payload.quantity
-    },
-    subCount(state, payload) {
-      state.total -= payload.product.price * payload.quantity
+    count(state, payload) {
+      // console.log(payload)
+      state.buyArr = payload
+      // console.log(state.buyArr)
+      state.total = 0
+      for (let i = 0; i < payload.length; i++) {
+        state.total += payload[i].product.price * payload[i].quantity
+      }
     },
     addOne(state, payload) {
       state.total += payload.product.price

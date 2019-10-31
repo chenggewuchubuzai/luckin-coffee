@@ -1,34 +1,28 @@
 <template>
   <div class="product">
     <ul>
-      <van-checkbox-group v-model="result">
-        <li v-for="item in cartsList" :key="item._id">
-          <div class="left">
-            <van-checkbox
-              :name="item._id"
-              ref="sel"
-              @click="selHandle(item, item.product._id)"
-              checked-color="rgba(136, 175, 213, 1)"
-            />
-            <div>
-              <div class="title">
-                <h2>{{ item.product.name }}</h2>
-                <van-tag type="warning" size="mini" class="tip">充2赠1</van-tag>
-              </div>
+      <li v-for="item in cartsList" :key="item._id">
+        <div class="left">
+          <van-checkbox v-model="item.sel" @change="buy(item.sel, item)" checked-color="rgba(136, 175, 213, 1)" />
+          <div>
+            <div class="title">
+              <h2>{{ item.product.name }}</h2>
+              <van-tag type="warning" size="mini" class="tip">充2赠1</van-tag>
             </div>
           </div>
-          <div class="right">
-            <span class="price">￥{{ item.product.price }}</span>
-            <van-stepper
-              v-model="item.quantity"
-              input-width="20px"
-              button-size="20px"
-              @plus="addHandle(item, item.product._id)"
-              @minus="subHandle(item, item.product._id)"
-            />
-            <i @click="delHandle(item, item._id)" class="el-icon-delete"></i>
-          </div></li
-      ></van-checkbox-group>
+        </div>
+        <div class="right">
+          <span class="price">￥{{ item.product.price }}</span>
+          <van-stepper
+            v-model="item.quantity"
+            input-width="20px"
+            button-size="20px"
+            @plus="addHandle(item.sel, item, item.product._id)"
+            @minus="subHandle(item.sel, item, item.product._id)"
+          />
+          <i @click="delHandle(item.sel, item, item._id)" class="el-icon-delete"></i>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
@@ -36,39 +30,52 @@
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
 import { addToCarts, delCartsProduct } from '../../api/product'
+import { login } from '../../api/user'
 
 export default {
   name: 'CartsProduct',
   data() {
     return {
-      checked: 'true',
-      result: []
+      buyArr: []
     }
   },
   computed: {
     ...mapState('cartsProducts', ['cartsList'])
   },
   methods: {
-    ...mapMutations('cartsProducts', ['addCount', 'subCount', 'addOne', 'subOne']),
+    ...mapMutations('cartsProducts', ['count', 'addOne', 'subOne']),
     ...mapActions('cartsProducts', ['loadCartData']),
-    selHandle() {
-      this.addCount(this.cartsList)
+    buy(checked, item) {
+      if (checked) {
+        this.buyArr.push(item)
+      } else {
+        this.buyArr.pop(item)
+      }
+      // console.log(this.buyArr)
+      this.count(this.buyArr)
     },
-    async addHandle(item, id) {
+    async addHandle(checked, item, id) {
       const result = await addToCarts(id)
-      this.loadCartData()
-      this.addOne(item)
+      if (checked) {
+        /*  console.log(checked)
+        console.log(item) */
+        this.addOne(item)
+      }
+      // this.loadCartData()
     },
-    async subHandle(item, id) {
+    async subHandle(checked, item, id) {
       const result = await addToCarts(id, -1)
-      this.loadCartData()
-      this.subOne(item)
+      // this.loadCartData()
+      if (checked) {
+        this.subOne(item)
+      }
     },
-    async delHandle(item, id) {
+    async delHandle(checked, item, id) {
       const result = await delCartsProduct(id)
       // console.log(result)
+      var checked = false
+      this.buy(checked, item)
       this.loadCartData()
-      this.subCount(item)
     }
   }
 }
