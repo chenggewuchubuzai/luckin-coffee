@@ -2,7 +2,7 @@
   <div class="detailss">
     <div class="section">
       <div class="pic">
-        <img src="../../assets/v-banner3.jpg" alt="" />
+        <img :src="goods.coverImg" style="height:260px" alt="" />
         <van-icon name="arrow-left" size="20px" class="back" @click="Back" />
       </div>
       <div class="dec">
@@ -43,20 +43,17 @@
       </div>
       <div class="he">
         <h3 style="margin:0.2rem ;">商品详情</h3>
-        <p style="font-size: 0.3rem;text-indent:2em">
-          焦糖风味糖浆的融入，提升了美式的原始风味，入口清甜，香气四溢。 主要原材料：浓缩咖啡，水，焦糖风味糖浆。
-          图片仅供参考，请以实物为准。建议送达后尽快饮用。
-        </p>
+        <p style="font-size: 0.3rem;text-indent:2em">{{ goods.descriptions }}</p>
       </div>
 
       <!-- <div style="height:100px"></div> -->
     </div>
-    <div class="pri">
+    <!--  <div class="pri">
       <h2></h2>
       <p style="font-size: 0.28rem;font-weight: 600;">￥ {{ goods.price }}</p>
       <p>{无糖} + {无奶}</p>
       <van-stepper v-model="goods.num" style="float: right;margin-top:-0.3rem ;" />
-    </div>
+    </div> -->
     <GoodsAction :proId="id"></GoodsAction>
   </div>
 </template>
@@ -163,11 +160,9 @@ export default {
   display: inline-block;
   margin-left: 0.3rem;
 }
-
 .dks {
   height: 1.5rem;
   background: #fff;
-  margin: 0.2rem;
 }
 .dks h2 {
   font-size: 0.26rem;
@@ -175,7 +170,7 @@ export default {
 }
 .he {
   height: 200px;
-  background: red;
+  background: #fff;
 }
 .dd-2 {
   padding-left: 0.7rem;

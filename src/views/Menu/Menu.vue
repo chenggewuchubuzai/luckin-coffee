@@ -18,32 +18,27 @@
                   :desc="goods.content"
                   :title="goods.name"
                   :thumb="goods.coverImg"
+                >
+                  <div slot="footer">
+                    <van-icon size="0.44rem" name="add" /></div
                 ></van-card>
-                <div slot="footer">
-                  <van-icon size="0.44rem" name="add" />
-                </div>
               </li>
             </ul>
           </div>
           <div v-if="activeIndex === 1">
             <ul>
               <li v-for="(goods, index) in list2" :key="index" @click="go(goods._id)">
-                <van-card
-                  :price="goods.price"
-                  :desc="goods.content"
-                  :title="goods.name"
-                  :thumb="goods.coverImg"
+                <van-card :price="goods.price" :desc="goods.content" :title="goods.name" :thumb="goods.coverImg">
+                  <div slot="footer">
+                    <van-icon size="0.44rem" name="add" /></div
                 ></van-card>
-                <div slot="footer">
-                  <van-icon size="0.44rem" name="add" />
-                </div>
               </li>
             </ul>
           </div>
           <div v-if="activeIndex === 2">
             <ul>
               <li v-for="(goods, index) in list3" :key="index" @click="go(goods._id)">
-                <van-card :price="goods.price" :desc="goods.content" :title="goods.name" thumb="goods.coverImg">
+                <van-card :price="goods.price" :desc="goods.content" :title="goods.name" :thumb="goods.coverImg">
                   <div slot="footer">
                     <van-icon size="0.44rem" name="add" />
                   </div>
@@ -54,7 +49,7 @@
           <div v-if="activeIndex === 3">
             <ul>
               <li v-for="(goods, index) in list4" :key="index" @click="go(goods._id)">
-                <van-card :price="goods.price" :desc="goods.content" :title="goods.name" thumb="goods.coverImg">
+                <van-card :price="goods.price" :desc="goods.content" :title="goods.name" :thumb="goods.coverImg">
                   <div slot="footer">
                     <van-icon size="0.44rem" name="add" />
                   </div>
@@ -122,65 +117,51 @@ export default {
     this.list5 = this.result5
   },
 
-    components: {
-      
-    },
-    data() {
-      return {
-        
-        list:[],
-        list2:[],
-        list3:[],
-        list4:[],
-        page:0,
-        per:0,
-        activeIndex: 0,
-        items: [
-          { text: '人气Top' },
-          { text: '大师咖啡' },
-          { text: '零度拿铁' },
-          { text: '瑞纳冰' },
-          { text: '经典饮品' }
-        ]
-        
-      }
-      
-    },
-    async created(){
-      let result=await products({page:1,per:2})
-      this.result=result.data.products
+  components: {},
+  data() {
+    return {
+      list: [],
+      list2: [],
+      list3: [],
+      list4: [],
+      page: 0,
+      per: 0,
+      activeIndex: 0,
+      items: [{ text: '人气Top' }, { text: '大师咖啡' }, { text: '零度拿铁' }, { text: '瑞纳冰' }, { text: '经典饮品' }]
+    }
+  },
+  async created() {
+    let result = await products({ page: 1, per: 2 })
+    this.result = result.data.products
 
-      this.list=this.result
-      let result2=await products({page:2,per:3})
+    this.list = this.result
+    let result2 = await products({ page: 2, per: 3 })
 
-      this.result2=result2.data.products
-      this.list2=this.result2
+    this.result2 = result2.data.products
+    this.list2 = this.result2
 
-      let result3=await products({page:3,per:5})
-      this.result3=result3.data.products
-      this.list3=this.result3
-      
-      let result4=await products({page:4,per:4})
-      this.result4=result4.data.products
-      this.list4=this.result4
-      let result5=await products({page:5,per:3})
-      this.result5=result5.data.products
-      this.list5=this.result5
+    let result3 = await products({ page: 3, per: 5 })
+    this.result3 = result3.data.products
+    this.list3 = this.result3
+
+    let result4 = await products({ page: 4, per: 4 })
+    this.result4 = result4.data.products
+    this.list4 = this.result4
+    let result5 = await products({ page: 5, per: 3 })
+    this.result5 = result5.data.products
+    this.list5 = this.result5
+  },
+
+  methods: {
+    //点击加入购物车
+    AddCar() {
+      alert('加入购物车')
     },
-    
-    
-    methods: {
-      //点击加入购物车
-      AddCar(){
-        alert('加入购物车')
-      },
-      go(id){
-        this.$router.push({name:'Details',params:{id}})
-      }
-    },
-   
+    go(id) {
+      this.$router.push({ name: 'Details', params: { id } })
+    }
   }
-
+}
 </script>
 <style scoped>
 /*  {
