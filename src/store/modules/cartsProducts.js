@@ -16,16 +16,16 @@ export default {
       state.num = 0
       for (let i = 0; i < payload.length; i++) {
         state.num += payload[i].quantity
+        // payload[i].sel = true
       }
       // console.log(state.num)
     },
     count(state, payload) {
       // console.log(payload)
-      state.buyArr = payload
       // console.log(state.buyArr)
       state.total = 0
-      for (let i = 0; i < payload.length; i++) {
-        state.total += payload[i].product.price * payload[i].quantity
+      for (let i = 0; i < state.buyArr.length; i++) {
+        state.total += state.buyArr[i].product.price * state.buyArr[i].quantity
       }
     },
     addOne(state, payload) {
