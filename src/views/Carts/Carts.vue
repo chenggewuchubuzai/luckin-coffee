@@ -3,12 +3,14 @@
     <h1>购物车</h1>
     <img class="banner" src="../../assets/carts_top.png" alt="" />
     <div class="section">
-      <CartsProduct v-if="!isEmpty"></CartsProduct>
-      <Empty v-if="isEmpty"></Empty>
+      <CartsProduct v-if="cartsList.length == 0 ? false : true"></CartsProduct>
+      <Empty v-if="cartsList.length == 0 ? true : false"></Empty>
       <RecommendProduct></RecommendProduct>
     </div>
-    <div class="sum" v-if="!isEmpty">
-      <div class="total">应付合计：<span class="price">￥21</span></div>
+    <div class="sum" v-if="cartsList.length == 0 ? false : true">
+      <div class="total">
+        应付合计：<span class="price">￥{{ this.total }}</span>
+      </div>
       <router-link :to="{ name: 'Confirm' }"><span class="toPay">去结算</span></router-link>
       <router-view />
     </div>
@@ -19,7 +21,8 @@
 import CartsProduct from '@/components/Carts/CartsProduct'
 import RecommendProduct from '@/components/Carts/RecommendProduct'
 import Empty from '@/components/Carts/Empty'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import { getToken } from '../../utils/token'
 
 export default {
   name: 'Carts',
@@ -28,10 +31,17 @@ export default {
     RecommendProduct,
     Empty
   },
-  data() {
-    return {
-      isEmpty: false
+  created() {
+    if (getToken()) {
+      this.loadCartData(), this.loadData()
     }
+  },
+  computed: {
+    ...mapState('cartsProducts', ['cartsList', 'total'])
+  },
+  methods: {
+    ...mapActions('cartsProducts', ['loadCartData']),
+    ...mapActions('loveProducts', ['loadData'])
   }
 }
 </script>
@@ -79,6 +89,7 @@ h1 {
   font-size: 0.48rem;
   color: rgba(56, 56, 56, 1);
   font-weight: bold;
+  color: #f00;
 }
 .toPay {
   display: block;

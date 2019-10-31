@@ -29,6 +29,7 @@ export default {
 
 <style scoped>
 .box {
+  width: 100%;
   height: 7.9rem;
   background: #fff;
   display: flex;
@@ -36,7 +37,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-top: 0.2rem;
-  padding: 0.82rem 0 0.78rem 0;
+  padding: 1.4rem 0 0.78rem 0;
   box-sizing: border-box;
 }
 img {

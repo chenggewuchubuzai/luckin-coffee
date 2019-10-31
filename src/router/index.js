@@ -20,6 +20,7 @@ import Dingdan from '../views/User/two/dingdan.vue'
 import Qiye from '../views/User/two/qiye.vue'
 import yonghuming from '../views/User/two/yonghuming.vue'
 import test from '../views/User/two/vue.vue'
+<<<<<<< HEAD
 import Erweima from '../views/User/two/three/erweima.vue'
 import cos from '../views/User/two/three/v.vue'
 import Cofferchong from '../views/User/two/three/cofferchong.vue'
@@ -28,6 +29,10 @@ import Welcome from '../views/Welcome/Welcome'
 import Shouhuo from '../views/User/two/three/shouhuo.vue'
 import Adress from '../views/User/two/three/myadress.vue'
 
+=======
+import Details from '../views/Menu/Details'
+import Welcome from '../views/Welcome/Welcome'
+>>>>>>> 86f41bf355ef4c169fa6d43524a42f90809f1d1a
 
 Vue.use(VueRouter)
 
@@ -67,7 +72,7 @@ const routes = [
     component: Menu
   },
   {
-    path: '/details',
+    path: '/details/:id',
     name: 'Details',
     component: Details,
     meta: {
@@ -143,8 +148,7 @@ const routes = [
   {
     path: '/user',
     name: 'User',
-    component: User,
-
+    component: User
   },
   {
     path: '/geren',
@@ -161,42 +165,47 @@ const routes = [
     meta: {
       isHide: true
     }
-  }, {
+  },
+  {
     path: '/zhanghu',
     name: 'Zhanghu',
     component: Zhanghu,
     meta: {
       isHide: true
     }
-  }, {
+  },
+  {
     path: '/coffer',
     name: 'Coffer',
     component: Coffer,
     meta: {
       isHide: true
     }
-  }, {
+  },
+  {
     path: '/fapiao',
     name: 'Fapiao',
     component: Fapiao,
     meta: {
-      isHide: true,
+      isHide: true
     }
   },
   {
     path: '/dingdan',
     name: 'Dingdan',
-    component: Dingdan,
+    component: Dingdan
   },
   {
     path: '/qiye',
     name: 'Qiye',
-    component: Qiye,
-  }, {
+    component: Qiye
+  },
+  {
     path: '/geren/yonghuming',
     name: 'yonghuming',
-    component: yonghuming,
-  }, {
+    component: yonghuming
+  },
+  {
     path: '/ge',
     name: 'y',
     component: test,
@@ -230,10 +239,6 @@ const routes = [
       isHide: true,
     }
   }
-
-
-
-
 ]
 
 const router = new VueRouter({

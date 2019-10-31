@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="orderInfo">
-      <div class="box">
+      <div class="addressInfo">
         <div class="address">
           <p>自提门店</p>
           <p>青年汇店(No.1795)</p>
@@ -82,7 +82,7 @@ export default {
   margin: 0.2rem 0;
   background: #fff;
 }
-.box {
+.addressInfo {
   display: flex;
   justify-content: space-between;
   height: 1.38rem;

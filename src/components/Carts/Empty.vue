@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="empty">
     <img src="../../assets/cart.png" alt="" />
     <p>您的购物车有点寂寞</p>
     <van-button class="btn" plain hairline type="info" style="width:2rem;height:0.6rem" :to="{ name: 'Menu' }"
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style scoped>
-.box {
+.empty {
   height: 5rem;
   display: flex;
   flex-direction: column;

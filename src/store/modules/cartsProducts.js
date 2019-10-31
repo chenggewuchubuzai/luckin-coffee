@@ -1,36 +1,45 @@
+import { cartsProducts } from '../../api/product'
+
 export default {
   namespaced: 'true',
   state: {
-    cartsList: [
-      {
-        id: 1,
-        name: '标准美式',
-        desc: '大/单份奶/单份糖/热',
-        price: '27',
-        num: 2
-      },
-      {
-        id: 2,
-        name: '香草拿铁',
-        desc: '大/单份奶/单份糖/热',
-        price: '24',
-        num: 3
-      },
-      {
-        id: 3,
-        name: '香芋拿铁',
-        desc: '大/单份奶/单份糖/热',
-        price: '24',
-        num: 4
-      }
-    ]
+    cartsList: [],
+    total: 0,
+    num: 0,
+    buyArr: []
   },
   mutations: {
     save(state, payload) {
-      state.list = payload.list
+      state.cartsList = payload
+      // console.log(payload)
+      // console.log(payload.length)
+      state.num = 0
+      for (let i = 0; i < payload.length; i++) {
+        state.num += payload[i].quantity
+      }
+      // console.log(state.num)
+    },
+    count(state, payload) {
+      // console.log(payload)
+      state.buyArr = payload
+      // console.log(state.buyArr)
+      state.total = 0
+      for (let i = 0; i < payload.length; i++) {
+        state.total += payload[i].product.price * payload[i].quantity
+      }
+    },
+    addOne(state, payload) {
+      state.total += payload.product.price
+    },
+    subOne(state, payload) {
+      state.total -= payload.product.price
     }
   },
   actions: {
-    async loadData({ commit }, payload) {}
+    async loadCartData({ commit }, payload) {
+      const result = await cartsProducts()
+      // console.log(result)
+      commit('save', result.data)
+    }
   }
 }

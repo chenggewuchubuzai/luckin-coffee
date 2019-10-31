@@ -8,10 +8,11 @@ export function getToken() {
 }
 
 //设置token
-export function setToken() {
+export function setToken(token) {
   return Cookies.set(TokenKey, token)
 }
 
+//删除token
 export function removeToken() {
   return Cookies.remove(TokenKey)
 }

@@ -1,18 +1,15 @@
 import axios from 'axios'
-import store from '@/store'
-import { getToken } from '@/utils/token'
+import { getToken } from '../utils/token'
 
 const service = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://39.106.231.90:3000',
   timeout: 5000
 })
 
 //全局请求拦截
 service.interceptors.request.use(
   config => {
-    if (store.getters.token) {
-      config.headers['authorization'] = 'Bearer' + getToken()
-    }
+    config.headers['authorization'] = 'Bearer ' + getToken()
     return config
   },
   error => {
