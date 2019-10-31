@@ -4,12 +4,12 @@
       <van-nav-bar title="账户余额" right-text="余额明细" left-arrow @click-left="onClickLeft" />
     </div>
     <div class="two">
-      <h1>0</h1>
-      <p>总余额</p>
+      <p>总余额{{sss}}</p>
     </div>
     <div class="ke">
       <div class="k-left">
-        <p>0</p>
+        <p>{{sss}}</p>
+
         <p>可用余额（元）</p>
       </div>
       <div class="k-right">
@@ -17,14 +17,22 @@
         <p>冻结余额（元）</p>
       </div>
     </div>
-    <van-button type="info">进行冲值</van-button>
+    <van-button type="info" @click="erweima">进行冲值</van-button>
   </div>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      sss: this.$route.query.t
+    }
+  },
   methods: {
     onClickLeft() {
       this.$router.go(-1)
+    },
+    erweima() {
+      this.$router.push('/coffer/erweima')
     }
   }
 }

@@ -18,6 +18,7 @@ Vue.use(VueRouter)
 
 Vue.use(Vuex)
 Vue.config.productionTip = false
+Vue.prototype.$eventBus = new Vue();
 
 new Vue({
   router,
