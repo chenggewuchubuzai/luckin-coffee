@@ -53,7 +53,7 @@
             <img src="../../assets/jiantou.svg" alt class="jiantou" />
           </div>
         </li>
-        <li class="shou">
+        <li class="shou" @click="shouhuo">
           <span>收货地址</span>
           <div>
             <img src="../../assets/jiantou.svg" alt class="jiantou" />
@@ -123,6 +123,9 @@ export default {
         .then(() => {
           this.wei = '已绑定'
         })
+    },
+    shouhuo() {
+      this.$router.push('/shouhuo')
     }
   }
 }

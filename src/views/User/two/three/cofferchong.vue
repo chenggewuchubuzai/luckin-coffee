@@ -36,7 +36,7 @@
 export default {
   data() {
     return {
-      value1: '',
+      value1: 0,
       value2: '',
       value3: ''
     }

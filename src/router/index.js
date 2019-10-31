@@ -25,6 +25,8 @@ import cos from '../views/User/two/three/v.vue'
 import Cofferchong from '../views/User/two/three/cofferchong.vue'
 import Details from '../views/Menu/Details'
 import Welcome from '../views/Welcome/Welcome'
+import Shouhuo from '../views/User/two/three/shouhuo.vue'
+import Adress from '../views/User/two/three/myadress.vue'
 
 
 Vue.use(VueRouter)
@@ -210,6 +212,20 @@ const routes = [
     path: '/cofferchong',
     name: 'Cofferchong',
     component: Cofferchong,
+    meta: {
+      isHide: true,
+    }
+  }, {
+    path: '/shouhuo',
+    name: 'Shouhuo',
+    component: Shouhuo,
+    meta: {
+      isHide: true,
+    }
+  }, {
+    path: '/three/myadress',
+    name: 'Adress',
+    component: Adress,
     meta: {
       isHide: true,
     }
