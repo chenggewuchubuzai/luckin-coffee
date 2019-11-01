@@ -1,14 +1,28 @@
 import { orderList } from '../../api/order'
+
 export default {
   namespaced: 'true',
   state: {
-    orderList: []
+    succeedList: [],
+    unfinishedList: []
   },
-  mutations: {},
+  mutations: {
+    save(state, payload) {
+      for (let i = 0; i < payload.length; i++) {
+        if (payload[i].isPayed == true) {
+          state.succeedList.push(payload[i])
+        } else {
+          state.unfinishedList.push(payload[i])
+        }
+      }
+    }
+  },
   actions: {
-    async loadOrderData() {
+    async loadOrderData({ commit }, payload) {
       const result = await orderList()
-      console.log(result)
+      const order = result.data.orders
+      console.log(order)
+      commit('save', order)
     }
   }
 }

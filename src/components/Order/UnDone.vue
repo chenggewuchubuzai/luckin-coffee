@@ -1,14 +1,21 @@
 <template>
   <div>
     <ul>
-      <li>
-        <p class="head"><span>外卖订单：23847563928174</span><span>待付款</span></p>
+      <li v-for="(item, index) in unfinishedList" :key="index">
+        <p class="head">
+          <span>外卖订单：{{ item.no }}</span
+          ><span>待付款</span>
+        </p>
         <div class="detail">
-          <p class="address"><span>北京市朝阳区青年汇佳园10号...</span><span>2019-01-08 09:05</span></p>
-          <p class="product">榛果拿铁等 共1件商品</p>
+          <p class="address">
+            <span>{{ item.address }}</span
+            ><span>{{ item.createdAt }}</span>
+          </p>
+          <p class="product">榛果拿铁等 共件商品</p>
         </div>
         <p class="price">
-          <span>￥12</span><van-tag plain size="large" type="warning" @click="toPay()">去支付</van-tag>
+          <span>￥{{ item.price }}</span
+          ><van-tag plain size="large" type="warning" @click="toPay()">去支付</van-tag>
         </p>
       </li>
     </ul>
@@ -16,8 +23,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'UnDone',
+  computed: {
+    ...mapState('order', ['unfinishedList'])
+  },
   methods: {
     toPay() {
       this.$router.push({

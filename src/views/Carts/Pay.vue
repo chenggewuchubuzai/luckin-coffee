@@ -4,14 +4,19 @@
     <div class="payment">
       <div class="payInfo">
         <p>订单付款</p>
-        <p>￥{{isOutside?zy:total}}</p>
+        <p>￥{{ isOutside ? zy : total }}</p>
       </div>
       <div class="payee">
         <span>收款方</span>
         <span>luckincoffee瑞幸咖啡</span>
       </div>
     </div>
-    <van-button @click='downOrder' id="btn" :to="{ name: 'Succeed' }" style="width:7.1rem;height:0.92rem;" type="primary"
+    <van-button
+      @click="downOrder"
+      id="btn"
+      :to="{ name: 'Succeed' }"
+      style="width:7.1rem;height:0.92rem;"
+      type="primary"
       >立即支付</van-button
     >
     <div class="bottom">支付安全由中国人民财产保险股份有限公司承保</div>
@@ -19,31 +24,43 @@
 </template>
 
 <script>
+<<<<<<< HEAD
   import {mapState,mapMutations} from 'vuex'
   import {subOrder} from '../../api/order'
  
+=======
+import { mapState } from 'vuex'
+import { subOrder } from '../../api/order'
+
+>>>>>>> fc4a41e7e73cfab90aa5c149f0143f53216ba32b
 export default {
   name: 'Pay',
   methods: {
     ...mapMutations('cartsProducts',['clearArr','getDate']),
 
     async onClickLeft() {
+<<<<<<< HEAD
       
       let order1={
         isPayed:false,
         receiver:'张岩',
         regions:'河南省郑州市',
         address:       '高新区教育产业园D栋千峰教育',
+=======
+      let order1 = {
+        isPayed: false,
+        receiver: '张岩',
+        regions: '河南省郑州市',
+        address: '高新区教育产业园D栋千峰教育'
+>>>>>>> fc4a41e7e73cfab90aa5c149f0143f53216ba32b
       }
-      order1.orderDetails=[]
+      order1.orderDetails = []
       this.buyArr.forEach(v => {
-        let obj1={}
-        obj1.quantity=v.quantity,
-        obj1.product=v.product._id,
-        obj1.price=v.product.price
+        let obj1 = {}
+        ;(obj1.quantity = v.quantity), (obj1.product = v.product._id), (obj1.price = v.product.price)
         order1.orderDetails.push(obj1)
-      });
-      let res=await subOrder(order1)
+      })
+      let res = await subOrder(order1)
       console.log(res)
 
       this.$router.push({
@@ -79,7 +96,7 @@ export default {
         address:this.buyArr.length
 
       }
-      order.orderDetails=[]
+      order.orderDetails = []
       this.buyArr.forEach(v => {
         let obj={}
         obj.quantity=v.quantity,

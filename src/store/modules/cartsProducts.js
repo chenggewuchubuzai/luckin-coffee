@@ -18,7 +18,6 @@ export default {
       state.num = 0
       for (let i = 0; i < payload.length; i++) {
         state.num += payload[i].quantity
-        // payload[i].sel = true
       }
       // console.log(state.num)
     },
