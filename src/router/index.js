@@ -20,7 +20,6 @@ import Dingdan from '../views/User/two/dingdan.vue'
 import Qiye from '../views/User/two/qiye.vue'
 import yonghuming from '../views/User/two/yonghuming.vue'
 import test from '../views/User/two/vue.vue'
-<<<<<<< HEAD
 import Erweima from '../views/User/two/three/erweima.vue'
 import cos from '../views/User/two/three/v.vue'
 import Cofferchong from '../views/User/two/three/cofferchong.vue'
@@ -28,11 +27,6 @@ import Details from '../views/Menu/Details'
 import Welcome from '../views/Welcome/Welcome'
 import Shouhuo from '../views/User/two/three/shouhuo.vue'
 import Adress from '../views/User/two/three/myadress.vue'
-
-=======
-import Details from '../views/Menu/Details'
-import Welcome from '../views/Welcome/Welcome'
->>>>>>> 86f41bf355ef4c169fa6d43524a42f90809f1d1a
 
 Vue.use(VueRouter)
 
@@ -208,35 +202,40 @@ const routes = [
   {
     path: '/ge',
     name: 'y',
-    component: test,
-  }, {
+    component: test
+  },
+  {
     path: '/coffer/erweima',
     name: 'Erweima',
-    component: Erweima,
-  }, {
+    component: Erweima
+  },
+  {
     path: '/cos',
     name: 'Erweima',
-    component: cos,
-  }, {
+    component: cos
+  },
+  {
     path: '/cofferchong',
     name: 'Cofferchong',
     component: Cofferchong,
     meta: {
-      isHide: true,
+      isHide: true
     }
-  }, {
+  },
+  {
     path: '/shouhuo',
     name: 'Shouhuo',
     component: Shouhuo,
     meta: {
-      isHide: true,
+      isHide: true
     }
-  }, {
+  },
+  {
     path: '/three/myadress',
     name: 'Adress',
     component: Adress,
     meta: {
-      isHide: true,
+      isHide: true
     }
   }
 ]
