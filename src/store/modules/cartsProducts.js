@@ -7,7 +7,8 @@ export default {
     total: 0,
     num: 0,
     buyArr: [],
-    zy: 0
+    zy: 0,
+    date: ''
   },
   mutations: {
     save(state, payload) {
@@ -30,6 +31,12 @@ export default {
         state.total += state.buyArr[i].product.price * state.buyArr[i].quantity
         state.zy += state.buyArr[i].product.price * state.buyArr[i].quantity + 6
       }
+    },
+    clearArr(state) {
+      state.buyArr = []
+    },
+    getDate(state, payload) {
+      state.date = payload
     },
     addOne(state, payload) {
       state.total += payload.product.price

@@ -1,17 +1,17 @@
 <template>
   <div class="orderDetail">
-    <div class="info" style="min-height: 2rem;overflow: auto;">
+    <div class="info" style="min-height: 10rem;">
       <ul>
         <li>
           <span>外卖订单:33412823848583</span>
-          <span>2019-01-07 14:22</span>
+          <span>{{ date }}</span>
         </li>
         <li v-for="(i,index) in buyArr" :key="index">
           <div class="product">
             <p class="product-name">{{ i.product.name }}</p>
             <p>大/单份糖/单份奶/热</p>
           </div>
-          <span class="num">{{ i.quantity }}</span>
+          <span class="num">x{{ i.quantity }}</span>
           <span class="price">￥{{ i.product.price }}</span>
         </li>
         <li>
@@ -44,9 +44,13 @@
   import { mapState } from 'vuex'
 
   export default {
+    data() {
+      return {}
+    },
+
     name: 'OrderDetail',
     computed: {
-      ...mapState('cartsProducts', ['buyArr', 'total', 'zy']),
+      ...mapState('cartsProducts', ['buyArr', 'total', 'zy', 'date']),
       ...mapState('isDelivery', ['isOutside'])
     },
     created() {
