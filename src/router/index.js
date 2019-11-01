@@ -19,7 +19,9 @@ import Fapiao from '../views/User/fapiao.vue'
 import Dingdan from '../views/User/two/dingdan.vue'
 import Qiye from '../views/User/two/qiye.vue'
 import yonghuming from '../views/User/two/yonghuming.vue'
+
 import test from '../views/User/two/vue.vue'
+
 import Erweima from '../views/User/two/three/erweima.vue'
 import cos from '../views/User/two/three/v.vue'
 import Cofferchong from '../views/User/two/three/cofferchong.vue'
@@ -27,6 +29,11 @@ import Details from '../views/Menu/Details'
 import Welcome from '../views/Welcome/Welcome'
 import Shouhuo from '../views/User/two/three/shouhuo.vue'
 import Adress from '../views/User/two/three/myadress.vue'
+import Delivery from '../views/Carts/delivery.vue'
+
+
+
+
 
 Vue.use(VueRouter)
 
@@ -64,6 +71,14 @@ const routes = [
     path: '/menu',
     name: 'Menu',
     component: Menu
+  },
+  {
+    path: '/delivery',
+    name: 'Delivery',
+    component: Delivery,
+    meta: {
+      isHide: true
+    }
   },
   {
     path: '/details/:id',
@@ -199,19 +214,31 @@ const routes = [
     name: 'yonghuming',
     component: yonghuming
   },
+<<<<<<< HEAD
+  , {
+=======
+
   {
+<<<<<<< HEAD
     path: '/ge',
     name: 'y',
     component: test
   },
   {
+=======
+>>>>>>> b59d93a020df2d872dece60586007c63aff467bd
+>>>>>>> 914a94c2db9a7bf34455c18a1138c81989a0a3ef
     path: '/coffer/erweima',
     name: 'Erweima',
     component: Erweima
   },
   {
     path: '/cos',
+<<<<<<< HEAD
     name: 'Erweima',
+=======
+    name: 'Erweima1',
+>>>>>>> 914a94c2db9a7bf34455c18a1138c81989a0a3ef
     component: cos
   },
   {

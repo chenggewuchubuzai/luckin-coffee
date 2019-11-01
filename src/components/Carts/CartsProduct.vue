@@ -34,13 +34,8 @@ import { login } from '../../api/user'
 
 export default {
   name: 'CartsProduct',
-  data() {
-    return {
-      buyArr: []
-    }
-  },
   computed: {
-    ...mapState('cartsProducts', ['cartsList'])
+    ...mapState('cartsProducts', ['cartsList', 'buyArr'])
   },
   methods: {
     ...mapMutations('cartsProducts', ['count', 'addOne', 'subOne']),
@@ -52,7 +47,7 @@ export default {
         this.buyArr.pop(item)
       }
       // console.log(this.buyArr)
-      this.count(this.buyArr)
+      this.count()
     },
     async addHandle(checked, item, id) {
       const result = await addToCarts(id)
