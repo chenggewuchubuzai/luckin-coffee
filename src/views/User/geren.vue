@@ -154,15 +154,19 @@ body,
   font-size: 0.3rem;
   display: flex;
   align-items: center;
-  border-bottom: 0.15rem solid #ccc;
+  border-bottom: 0.15rem solid rgba(204, 204, 204, 0.1);
 }
 .center {
   height: 1.5rem;
   padding-left: 0.2rem;
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   font-size: 0.25rem;
+}
+.centers {
+  flex: 1;
 }
 .logo {
   height: 1rem;

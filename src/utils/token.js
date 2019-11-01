@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+// npm i js-cookie
 
 const TokenKey = 'user_token'
 

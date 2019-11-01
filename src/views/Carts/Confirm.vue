@@ -61,22 +61,7 @@ export default {
       this.$router.go(-1)
     },
 
-    async onSubmit() {
-      const order = {
-        receiver: '张岩',
-        regions: '郑州市高新区',
-        address: '教育产业园D栋前锋教育'
-      }
-      order.orderDetails = []
-      this.buyArr.forEach(item => {
-        const obj = {}
-        obj.quantity = item.quantity
-        obj.product = item.product._id
-        obj.price = item.product.price
-        order.orderDetails.push(obj)
-      })
-      let res = await subOrder(order)
-      console.log(order)
+    onSubmit() {
       this.$router.push({
         name: 'Pay'
       })

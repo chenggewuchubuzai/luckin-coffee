@@ -52,9 +52,7 @@ export default {
     ...mapMutations('isDelivery', ['change']),
   
   },
-  created(){
-console.log(this.buyArr)
-  }
+    
 }
 </script>
 
