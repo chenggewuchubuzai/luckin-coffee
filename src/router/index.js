@@ -19,7 +19,10 @@ import Fapiao from '../views/User/fapiao.vue'
 import Dingdan from '../views/User/two/dingdan.vue'
 import Qiye from '../views/User/two/qiye.vue'
 import yonghuming from '../views/User/two/yonghuming.vue'
+<<<<<<< HEAD
 
+=======
+>>>>>>> b59d93a020df2d872dece60586007c63aff467bd
 import Erweima from '../views/User/two/three/erweima.vue'
 import cos from '../views/User/two/three/v.vue'
 import Cofferchong from '../views/User/two/three/cofferchong.vue'
@@ -29,7 +32,10 @@ import Shouhuo from '../views/User/two/three/shouhuo.vue'
 import Adress from '../views/User/two/three/myadress.vue'
 import Delivery from '../views/Carts/delivery.vue'
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b59d93a020df2d872dece60586007c63aff467bd
 Vue.use(VueRouter)
 
 const routes = [
@@ -209,34 +215,43 @@ const routes = [
     name: 'yonghuming',
     component: yonghuming
   },
+<<<<<<< HEAD
   , {
+=======
+
+  {
+>>>>>>> b59d93a020df2d872dece60586007c63aff467bd
     path: '/coffer/erweima',
     name: 'Erweima',
-    component: Erweima,
-  }, {
+    component: Erweima
+  },
+  {
     path: '/cos',
-    name: 'Erweima',
-    component: cos,
-  }, {
+    name: 'Erweima1',
+    component: cos
+  },
+  {
     path: '/cofferchong',
     name: 'Cofferchong',
     component: Cofferchong,
     meta: {
-      isHide: true,
+      isHide: true
     }
-  }, {
+  },
+  {
     path: '/shouhuo',
     name: 'Shouhuo',
     component: Shouhuo,
     meta: {
-      isHide: true,
+      isHide: true
     }
-  }, {
+  },
+  {
     path: '/three/myadress',
     name: 'Adress',
     component: Adress,
     meta: {
-      isHide: true,
+      isHide: true
     }
   }
 ]

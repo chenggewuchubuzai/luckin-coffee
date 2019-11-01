@@ -7,7 +7,7 @@
         <p class="time">约<span>14:42</span>可取</p>
       </div>
     </div>
-    <div class="orderInfo">
+    <div class="orderInfo" style="min-height: 5rem; overflow: auto;">
       <div class="addressInfo">
         <div class="address">
           <p>自提门店</p>
@@ -18,32 +18,42 @@
       </div>
       <div class="info">
         <p>订单信息</p>
-        <div class="detail">
-          <div class="product">
-            <p>标准美式</p>
+        <div class="detail" v-for="(i,index) in buyArr" :key="index">
+          <div class="product" >
+            <p>{{i.product.name}}</p>
             <p>大/单份糖/单份奶/热</p>
           </div>
-          <span class="num">x1</span>
-          <span class="price">￥21</span>
+          <span class="num">{{i.quantity}}</span>
+          <span class="price">￥{{i.product.price}}</span>
         </div>
       </div>
-      <div class="total">合计：<span>￥21</span></div>
+      <div class="total">合计：<span>￥{{total}}</span></div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations,mapState } from 'vuex'
+
+
 
 export default {
   name: 'Ziti',
   data() {
     return {
-      checked: false
+      checked: false,
+      
     }
   },
+  computed: {
+    ...mapState('cartsProducts',['buyArr','total',])
+  },
   methods: {
-    ...mapMutations('isDelivery', ['change'])
+    ...mapMutations('isDelivery', ['change']),
+  
+  },
+  created(){
+console.log(this.buyArr)
   }
 }
 </script>

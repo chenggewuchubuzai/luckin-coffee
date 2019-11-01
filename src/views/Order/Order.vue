@@ -19,6 +19,7 @@
 <script>
 import Done from '../../components/Order/Done'
 import UnDone from '../../components/Order/UnDone'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Order',
@@ -30,6 +31,12 @@ export default {
     return {
       active: 0
     }
+  },
+  created() {
+    this.loadOrderData()
+  },
+  methods: {
+    ...mapActions('order', ['loadOrderData'])
   }
 }
 </script>

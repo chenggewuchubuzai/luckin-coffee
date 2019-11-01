@@ -19,6 +19,8 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+ 
 export default {
   name: 'Pay',
   methods: {
@@ -27,7 +29,11 @@ export default {
         name: 'Cancel'
       })
     }
-  }
+  },
+  computed: {
+    ...mapState('cartsProducts','total','zy'),
+    ...mapState('isDelivery','isOutside')
+  },
 }
 </script>
 

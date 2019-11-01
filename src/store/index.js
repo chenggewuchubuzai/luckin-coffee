@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import cartsProducts from './modules/cartsProducts'
 import loveProducts from './modules/loveProducts'
 import isDelivery from './modules/isDelivery'
+import order from './modules/order'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
   modules: {
     cartsProducts,
     loveProducts,
-    isDelivery
+    isDelivery,
+    order
   }
 })

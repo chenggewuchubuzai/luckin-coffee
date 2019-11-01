@@ -6,6 +6,7 @@ export default {
   mutations: {
     change(state, payload) {
       state.isOutside = !state.isOutside
+      console.log(state.isOutside)
     }
   }
 }

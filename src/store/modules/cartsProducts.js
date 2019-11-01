@@ -6,7 +6,8 @@ export default {
     cartsList: [],
     total: 0,
     num: 0,
-    buyArr: []
+    buyArr: [],
+    zy: 0
   },
   mutations: {
     save(state, payload) {
@@ -16,16 +17,19 @@ export default {
       state.num = 0
       for (let i = 0; i < payload.length; i++) {
         state.num += payload[i].quantity
+        // payload[i].sel = true
       }
       // console.log(state.num)
     },
     count(state, payload) {
       // console.log(payload)
-      state.buyArr = payload
       // console.log(state.buyArr)
       state.total = 0
+      state.zy = 0
+
       for (let i = 0; i < payload.length; i++) {
         state.total += payload[i].product.price * payload[i].quantity
+        state.zy += payload[i].product.price * payload[i].quantity + 6
       }
     },
     addOne(state, payload) {
