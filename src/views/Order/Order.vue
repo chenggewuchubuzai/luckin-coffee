@@ -29,6 +29,7 @@
 import Done from '../../components/Order/Done'
 import UnDone from '../../components/Order/UnDone'
 import { mapState, mapMutations, mapActions } from 'vuex'
+import { getToken } from '../../utils/token'
 
 export default {
   name: 'Order',
@@ -47,7 +48,9 @@ export default {
     }
   },
   created() {
-    this.loadOrderData()
+    if (getToken()) {
+      this.loadOrderData()
+    }
   },
   methods: {
     ...mapActions('order', ['loadOrderData'])

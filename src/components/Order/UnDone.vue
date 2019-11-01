@@ -62,13 +62,13 @@ li {
 }
 .address {
   color: rgba(56, 56, 56, 1);
-  font-size: 0.3rem;
+  font-size: 0.26rem;
   display: flex;
   justify-content: space-between;
 }
 .address span:nth-of-type(2) {
   color: rgba(166, 166, 166, 1);
-  font-size: 0.24rem;
+  font-size: 0.2rem;
 }
 .product {
   color: rgba(80, 80, 80, 1);

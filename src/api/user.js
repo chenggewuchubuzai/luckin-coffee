@@ -9,3 +9,8 @@ export const login = user => {
 export const register = user => {
   return post('/api/v1/auth/reg', user)
 }
+
+//获取用户信息
+export const getInfo = () => {
+  return get('/api/v1/users/info')
+}
