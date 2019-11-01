@@ -1,18 +1,27 @@
 <template>
   <div class="order">
     <van-nav-bar title="订单列表"></van-nav-bar>
-    <van-tabs v-model="active" title-active-color="rgba(144, 192, 239, 1)" color="rgba(144, 192, 239, 1)">
-      <van-tab title="全部">
-        <UnDone></UnDone>
-        <Done></Done>
-      </van-tab>
-      <van-tab title="未完成">
-        <UnDone></UnDone>
-      </van-tab>
-      <van-tab title="已完成">
-        <Done></Done>
-      </van-tab>
-    </van-tabs>
+    <section>
+      <van-tabs
+        v-model="active"
+        :offset-top="46"
+        animated
+        sticky
+        title-active-color="rgba(144, 192, 239, 1)"
+        color="rgba(144, 192, 239, 1)"
+      >
+        <van-tab title="全部">
+          <UnDone></UnDone>
+          <Done></Done>
+        </van-tab>
+        <van-tab title="未完成">
+          <UnDone></UnDone>
+        </van-tab>
+        <van-tab title="已完成">
+          <Done></Done>
+        </van-tab>
+      </van-tabs>
+    </section>
   </div>
 </template>
 
@@ -23,6 +32,11 @@ import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Order',
+  data() {
+    return {
+      animated: true
+    }
+  },
   components: {
     Done,
     UnDone
@@ -40,3 +54,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.order {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+section {
+  flex: 1;
+  overflow: auto;
+}
+</style>
