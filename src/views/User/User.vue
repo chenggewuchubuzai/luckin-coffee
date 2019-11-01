@@ -2,6 +2,7 @@
   <div class="user">
     <div class="top">
       <img src="../../assets/logo1.jpg" alt class="logo" />
+      <span class="wo">这是我的主页面</span>
       <van-row type="flex" class="zhong">
         <a @click="zhanghu()">
           <!-- <van-col span="6"> -->
@@ -166,7 +167,7 @@ li {
   width: 6.5rem;
   position: absolute;
   top: 3.3rem;
-  left: 0;
+  left: 0.2rem;
   background: #fff;
   display: flex;
   align-items: center;
@@ -179,6 +180,11 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.wo {
+  position: absolute;
+  top: 2rem;
+  left: 1.8rem;
 }
 </style>
 
