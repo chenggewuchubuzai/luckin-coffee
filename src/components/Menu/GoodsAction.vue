@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState, mapMutations } from 'vuex'
 import { addToCarts } from '../../api/product'
 
 export default {
@@ -20,7 +20,7 @@ export default {
     async onClickButton2(id) {
       const result = await addToCarts(id)
       // console.log(result)
-      console.log(id)
+      // console.log(id)
       this.$toast({
         message: '添加购物车成功'
       }),

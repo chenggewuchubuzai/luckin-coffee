@@ -19,10 +19,10 @@
           <p>距您100m</p>
         </div>
         <div class="maptoggle">
-          <van-switch size="0.5rem" />
+          <van-switch size="0.5rem" v-model="checked" />
         </div>
       </li>
-      <router-link tag="li" :to="{name:'Menu'}">
+      <router-link tag="li" :to="{ name: 'Menu' }">
         <div class="item">
           <h2>现在下单</h2>
           <p>OREDR NOW</p>
@@ -31,7 +31,7 @@
           <img src="../../assets/option1.svg" alt="咖啡" />
         </div>
       </router-link>
-      <router-link tag="li" :to="{name:'Coffer'}">
+      <router-link tag="li" :to="{ name: 'Coffer' }">
         <div class="item">
           <h2>咖啡钱包</h2>
           <p>COFFRR WALLET</p>
@@ -63,14 +63,17 @@
     <div class="home-b">
       <img src="../../assets/hom-b.png" alt="主页抽奖 img" />
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
   name: 'home',
-  components: {}
+  data() {
+    return {
+      checked: false
+    }
+  }
 }
 </script>
 

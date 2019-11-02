@@ -1,16 +1,21 @@
 <template>
   <div>
     <ul>
-      <li>
+      <li v-for="(item, index) in succeedList" :key="index">
         <p class="head">
-          <span>外卖订单：23847563928174</span><span style="color:rgba(166, 166, 166, 1)">已完成</span>
+          <span>外卖订单：{{ item.no }}</span
+          ><span style="color:rgba(166, 166, 166, 1)">已完成</span>
         </p>
         <div class="detail">
-          <p class="address"><span>北京市朝阳区青年汇佳园10号...</span><span>2019-01-08 09:05</span></p>
+          <p class="address">
+            <span>{{ item.address }}</span
+            ><span>{{ item.createdAt }}</span>
+          </p>
           <p class="product">榛果拿铁等 共1件商品</p>
         </div>
         <p class="price">
-          <span>￥12</span><van-tag plain class="again" size="large" @click="again()">再来一单</van-tag
+          <span>￥{{ item.price }}</span
+          ><van-tag plain class="again" size="large" @click="again()">再来一单</van-tag
           ><van-tag plain size="large" type="warning" color="rgba(144, 192, 239, 1)" @click="evaluate()"
             >去评价</van-tag
           >
@@ -21,8 +26,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Done',
+  computed: {
+    ...mapState('order', ['succeedList'])
+  },
   methods: {
     again() {
       this.$router.push({
@@ -60,13 +70,13 @@ li {
 }
 .address {
   color: rgba(56, 56, 56, 1);
-  font-size: 0.3rem;
+  font-size: 0.26rem;
   display: flex;
   justify-content: space-between;
 }
 .address span:nth-of-type(2) {
   color: rgba(166, 166, 166, 1);
-  font-size: 0.24rem;
+  font-size: 0.2rem;
 }
 .product {
   color: rgba(80, 80, 80, 1);

@@ -56,13 +56,12 @@ body,
 }
 
 .b {
-  background: yellow;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.nav {
+/* .nav {
   color: black;
 }
 .van-nav-bar__text {
@@ -70,13 +69,13 @@ body,
 }
 .van-icon-arrow-left {
   color: black;
-}
+} */
+
 .tu {
   height: 2rem;
   width: 100%;
 }
 .laji {
-  background: orange;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,8 +89,8 @@ body,
   display: flex;
   justify-content: space-around;
   height: 1rem;
-  padding-top: 0.3rem;
-  box-shadow: 0px 0px 1px 3px #ccc;
+  padding: 0.3rem;
+  box-shadow: 0px 0px 1px 2px rgba(128, 128, 128, 0.1);
 }
 .van-button {
   width: 2rem;

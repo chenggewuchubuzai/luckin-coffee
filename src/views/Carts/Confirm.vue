@@ -19,7 +19,7 @@
     </div>
     <van-submit-bar
       id="bottom"
-      :price="isOutside ? zy*100:total*100"
+      :price="isOutside ? zy * 100 : total * 100"
       label="还需付："
       button-text="去支付"
       button-type="info"
@@ -32,98 +32,83 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-  import Ziti from '../../components/Carts/Ziti'
-  import Outside from '../../components/Carts/Outside'
-  import Discount from '../../components/Carts/Discounts'
-  import { subOrder } from '../../api/order'
+import { mapState } from 'vuex'
+import Ziti from '../../components/Carts/Ziti'
+import Outside from '../../components/Carts/Outside'
+import Discount from '../../components/Carts/Discounts'
+import { subOrder } from '../../api/order'
 
-  export default {
-    name: 'Confirm',
-    components: {
-      Ziti,
-      Outside,
-      Discount
-    },
-    data() {
-      return {
-        checked: true,
-        fixed: true
-      }
-    },
-    computed: {
-      ...mapState('isDelivery', ['isOutside']),
-      ...mapState('cartsProducts', ['total', 'zy', 'buyArr'])
+export default {
+  name: 'Confirm',
+  components: {
+    Ziti,
+    Outside,
+    Discount
+  },
+  data() {
+    return {
+      checked: true,
+      fixed: true
+    }
+  },
+  computed: {
+    ...mapState('isDelivery', ['isOutside']),
+    ...mapState('cartsProducts', ['total', 'zy', 'buyArr'])
+  },
+
+  methods: {
+    onClickLeft() {
+      this.$router.go(-1)
     },
 
-    methods: {
-      onClickLeft() {
-        this.$router.go(-1)
-      },
-
-      async onSubmit() {
-        const order = {
-          receiver: '张岩',
-          regions: '郑州市高新区',
-          address: '教育产业园D栋前锋教育'
-        }
-        order.orderDetails = []
-        this.buyArr.forEach(item => {
-          const obj = {}
-          obj.quantity = item.quantity
-          obj.product = item.product._id
-          obj.price = item.product.price
-          order.orderDetails.push(obj)
-        })
-        let res = await subOrder(order)
-        console.log(order)
-        this.$router.push({
-          name: 'Pay'
-        })
-      }
+    onSubmit() {
+      this.$router.push({
+        name: 'Pay'
+      })
     }
   }
+}
 </script>
 
 <style scoped>
-  .confirm {
-    height: 100%;
-    background-color: rgba(248, 248, 248, 1);
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .section {
-    margin-top: 0.88rem;
-    flex: 1;
-    overflow: auto;
-  }
-  .remark {
-    height: 1rem;
-    background: #fff;
-    font-size: 0.28rem;
-    line-height: 1rem;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0.3rem;
-    margin: 0.2rem 0;
-  }
-  .jt {
-    width: 0.28rem;
-  }
-  .agree {
-    height: 1.2rem;
-    padding: 0 0.3rem;
-  }
-  .agree p {
-    font-size: 0.22rem;
-    color: rgba(166, 166, 166, 1);
-  }
-  .bottom {
-    height: 1.2rem;
-    clear: both;
-  }
-  .kong {
-    height: 1rem;
-  }
+.confirm {
+  height: 100%;
+  background-color: rgba(248, 248, 248, 1);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.section {
+  margin-top: 0.88rem;
+  flex: 1;
+  overflow: auto;
+}
+.remark {
+  height: 1rem;
+  background: #fff;
+  font-size: 0.28rem;
+  line-height: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.3rem;
+  margin: 0.2rem 0;
+}
+.jt {
+  width: 0.28rem;
+}
+.agree {
+  height: 1.2rem;
+  padding: 0 0.3rem;
+}
+.agree p {
+  font-size: 0.22rem;
+  color: rgba(166, 166, 166, 1);
+}
+.bottom {
+  height: 1.2rem;
+  clear: both;
+}
+.kong {
+  height: 1rem;
+}
 </style>

@@ -9,10 +9,10 @@
     </div>
     <div class="orderInfo" style="min-height: 5rem; overflow: auto;">
       <div class="addressInfo">
-        <div class="address">
+        <div class="address" @click='goAdress'>
           <p>配送信息</p>
           <p><img src="../../assets/icon1.svg" alt="" />北京时朝阳区青年汇佳园10号楼102...</p>
-          <p><img src="../../assets/icon2.svg" alt="" />朝阳区朝阳北路青年汇102号楼一层123室</p>
+          <p><img src="../../assets/icon2.svg" alt="" />134******5789</p>
         </div>
         <img src="../../assets/jt.svg" alt="" />
       </div>
@@ -51,6 +51,9 @@ export default {
     ...mapState('cartsProducts',['total','buyArr','zy'])
   },
   methods: {
+    goAdress(){
+      this.$router.push('/')
+    },
     ...mapMutations('isDelivery', ['change'])
     
   }
