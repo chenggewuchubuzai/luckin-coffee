@@ -22,5 +22,5 @@ export const updateAddress = (id, address) => {
 
 //根据id删除收货地址
 export const delAddress = id => {
-  return post(`/api/v1/addresses${id}`)
+  return del(`/api/v1/addresses/${id}`)
 }

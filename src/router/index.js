@@ -27,6 +27,8 @@ import Welcome from '../views/Welcome/Welcome'
 import Shouhuo from '../views/User/two/three/shouhuo.vue'
 import Adress from '../views/User/two/three/myadress.vue'
 import Delivery from '../views/Carts/delivery.vue'
+import Adeess from '../views/Carts/adress.vue'
+import Edit from '../views/Carts/edit.vue'
 
 Vue.use(VueRouter)
 
@@ -69,6 +71,21 @@ const routes = [
     path: '/delivery',
     name: 'Delivery',
     component: Delivery,
+    meta: {
+      isHide: true
+    }
+  }, {
+    path: 'edit',
+    name: 'Edeit',
+    component: Edit,
+    meta: {
+      isHide: true
+    }
+  },
+  {
+    path: '/address',
+    name: 'Adeess',
+    component: Adeess,
     meta: {
       isHide: true
     }
