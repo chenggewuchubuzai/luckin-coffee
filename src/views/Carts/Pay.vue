@@ -31,7 +31,6 @@ export default {
   name: 'Pay',
   methods: {
     ...mapMutations('cartsProducts', ['clearArr', 'getDate']),
-
     async onClickLeft() {
       let order1 = {
         isPayed: false,
@@ -51,9 +50,7 @@ export default {
       this.$router.push({
         name: 'Cancel'
       })
-
       // console.log(this.getdate())
-
       //  this.clearArr()
     },
     // getdate(){
@@ -71,7 +68,6 @@ export default {
     //   // console.log(systemDate)
     //   return systemDate
     // },
-
     async downOrder() {
       let order = {
         isPayed: true,
@@ -88,13 +84,11 @@ export default {
           order.orderDetails.push(obj)
       })
       let res = await subOrder(order)
-      console.log(res)
-      console.log(this.buyArr)
+      /* console.log(res)
+      console.log(this.buyArr) */
       this.getDate(res.data.info.order.createdAt)
-
       // this.clearArr()
       // console.log(this.buyArr)
-
       // console.log(this.getdate())
     }
   },

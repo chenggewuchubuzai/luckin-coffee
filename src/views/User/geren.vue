@@ -1,5 +1,6 @@
 <template>
   <div class="ge">
+<<<<<<< HEAD
     <!-- <van-row type="flex" justify="center" class="top">
       <van-col span="6" class>
         <img src="../../assets/jiantou.svg" alt class="jian" @click="geren()" />
@@ -8,6 +9,9 @@
       <van-col span="6"></van-col>
     </van-row>-->
     <van-nav-bar title="个人资料" left-arrow @click-left="geren()" />
+=======
+    <van-nav-bar title="个人资料" id="top" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
+>>>>>>> b6166502c05cacee41cbdcd74ec4d55550df7495
     <div class="centers">
       <div class="center">
         <span>头像</span>
@@ -20,14 +24,14 @@
         <li @click="yonghuming">
           <span>用户名</span>
           <div>
-            <span>{{value}}</span>
+            <span>{{ value }}</span>
             <img src="../../assets/jiantou.svg" alt class="jiantou" />
           </div>
         </li>
-        <li @click="show=true">
+        <li @click="show = true">
           <span>性别</span>
           <div>
-            <span>{{res}}</span>
+            <span>{{ res }}</span>
             <img src="../../assets/jiantou.svg" alt class="jiantou" />
             <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
           </div>
@@ -43,7 +47,7 @@
           <span>绑定微信</span>
 
           <div>
-            <span>{{wei}}</span>
+            <span>{{ wei }}</span>
             <img src="../../assets/jiantou.svg" alt class="jiantou" />
           </div>
         </li>
@@ -97,6 +101,9 @@ export default {
     }
   },
   methods: {
+    onClickLeft() {
+      this.$router.go(-1)
+    },
     geren() {
       this.$router.go(-1)
     },
@@ -132,42 +139,22 @@ export default {
 }
 </script>
 <style scoped>
-html,
-body,
-.user {
-  width: 100%;
-  height: 100%;
-}
 .ge {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
-.jian {
-  width: 0.38rem;
-  height: 0.38rem;
-  margin-right: 0.3rem;
-}
-.top {
-  width: 100%;
-  height: 1.1rem;
-
-  font-size: 0.3rem;
-  display: flex;
-  align-items: center;
-  border-bottom: 0.15rem solid rgba(204, 204, 204, 0.1);
-}
 .center {
   height: 1.5rem;
-  padding-left: 0.2rem;
+  padding-left: 0.3rem;
   display: flex;
-
   justify-content: space-between;
   align-items: center;
   font-size: 0.25rem;
 }
 .centers {
   flex: 1;
+  margin-top: 0.8rem;
 }
 .logo {
   height: 1rem;
@@ -178,17 +165,17 @@ body,
   width: 0.38rem;
   height: 0.38rem;
   margin-right: 0.3rem;
+  margin-left: 0.2rem;
 }
 ul {
   height: 9rem;
-
-  padding-left: 0.2rem;
 }
 li {
   height: 1.1rem;
   background: #fff;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
   display: flex;
+  padding-left: 0.3rem;
   justify-content: space-between;
   align-items: center;
   font-size: 0.25rem;
@@ -199,13 +186,13 @@ li {
   flex-direction: column;
 }
 .btn {
-  margin: 0.5rem;
+  margin: 0.5rem auto 0.5rem;
   height: 1rem;
   display: block;
   width: 80%;
   font-size: 0.25rem;
 }
 .shou {
-  border-bottom: 0.1rem solid #ccc;
+  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.1);
 }
 </style>

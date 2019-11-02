@@ -55,12 +55,10 @@ export default {
     ...mapState('isDelivery', ['isOutside']),
     ...mapState('cartsProducts', ['total', 'zy', 'buyArr'])
   },
-
   methods: {
     onClickLeft() {
       this.$router.go(-1)
     },
-
     onSubmit() {
       this.$router.push({
         name: 'Pay'

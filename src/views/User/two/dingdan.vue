@@ -3,7 +3,7 @@
     <van-nav-bar title="按订单开票" left-arrow @click-left="onClickLeft" />
     <div class="contern">
       <img src="../../../assets/laji 160.png" alt />
-      <p>目前作暂无开发</p>
+      <p>目前暂无开发</p>
     </div>
   </div>
 </template>
@@ -17,9 +17,6 @@ export default {
 }
 </script>
 <style scoped>
-.van-nav-bar {
-  box-shadow: 3px 3px 3px #ccc;
-}
 img {
   height: 200px;
   width: 100px;
@@ -28,6 +25,7 @@ img {
   margin: 3rem;
 }
 p {
-  width: 100%;
+  width: 3rem;
+  margin-left: 0.27rem;
 }
 </style>

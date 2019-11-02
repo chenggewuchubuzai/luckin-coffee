@@ -63,7 +63,7 @@ section {
   margin-top: 0.2rem;
 }
 .left p {
-  font-size: 0.13rem;
+  font-size: 0.23rem;
   color: gray;
   margin-top: 0.2rem;
 }
@@ -75,11 +75,10 @@ section {
 }
 .bottom {
   height: 0.8rem;
-  width: 7rem;
+  width: 6rem;
   font-size: 0.3rem;
   display: flex;
   align-items: center;
-  padding: 0 3rem;
   justify-content: space-between;
 }
 .a {
@@ -89,10 +88,11 @@ section {
   border-radius: 46%;
   height: 0.7rem;
   text-align: center;
-  margin-top: 0.3rem;
+  margin-top: 0.22rem;
   line-height: 0.7rem;
   font-size: 0.2rem;
   color: #fff;
+  margin-right: 0.3rem;
 }
 .b {
   font-size: 0.32rem;

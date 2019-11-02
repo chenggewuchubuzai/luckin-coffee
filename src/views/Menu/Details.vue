@@ -81,7 +81,6 @@ export default {
     console.log(id)
     let result = await getProductById(id)
     console.log(result)
-
     this.goods = result.data
     console.log(this.goods)
   },

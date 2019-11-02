@@ -3,7 +3,7 @@
     <van-nav-bar title="发票管理" right-text="发票说明" left-arrow @click-left="onClickLeft" />
     <class class="b">
       <ul>
-        <router-link :to="{name:'Dingdan'}">
+        <router-link :to="{ name: 'Dingdan' }">
           <li>
             <span>按订单开票</span>
             <img src="../../assets/jiantou.svg" alt />
@@ -55,16 +55,6 @@ body,
   display: flex;
   flex-direction: column;
 }
-.a {
-  height: 1rem;
-  background: red;
-}
-.van-nav-bar__text {
-  color: black;
-}
-.van-icon {
-  color: black;
-}
 .b {
   flex: 1;
 }
@@ -73,22 +63,24 @@ body,
 }
 ul {
   height: 6.5rem;
+  margin-top: 0.1rem;
 }
 li {
   height: 1.1rem;
-  border-bottom: 1px solid #ccc;
-  font-size: 0.2rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  font-size: 0.26rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 0.3rem;
+  padding-left: 0.3rem;
   padding-right: 0.2rem;
+  background: #fff;
 }
 img {
   height: 0.3rem;
   width: 0.3rem;
 }
 .chong {
-  border-bottom: 0.1rem solid #ccc;
+  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.1);
 }
 </style>

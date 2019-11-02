@@ -85,7 +85,6 @@ import { products } from '../../api/product'
 
 export default {
   name: 'Menu',
-
   components: {},
   data() {
     return {
