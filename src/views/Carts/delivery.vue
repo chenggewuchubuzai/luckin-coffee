@@ -3,10 +3,10 @@
     <van-nav-bar title="地址" left-arrow @click-left="onClickLeft" />
 
     <div class="a">
-      <p class="top">
+      <!-- <p class="top">
         <span>我的收货地址</span>
         <span>管理我的收获地址</span>
-      </p>
+      </p>-->
       <div class="centern" v-for="item in addList" :key="item._id">
         <p id="p">{{ item.regions }}</p>
         <van-tag type="primary">公司</van-tag>
@@ -102,7 +102,7 @@ body,
   background: #fff;
   padding-top: 0.2rem;
   margin: 0 0.3rem;
-  border-bottom: 0.1rem solid pink;
+  margin-bottom: 0.3rem;
 }
 .centern p {
   font-size: 0.22rem;
