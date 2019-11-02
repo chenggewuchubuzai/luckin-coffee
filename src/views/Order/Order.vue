@@ -1,10 +1,10 @@
 <template>
   <div class="order">
-    <van-nav-bar title="订单列表" id="title"></van-nav-bar>
+    <h1>订单列表</h1>
     <section>
       <van-tabs
         v-model="active"
-        :offset-top="46"
+        :offset-top="44"
         animated
         sticky
         title-active-color="rgba(144, 192, 239, 1)"
@@ -59,6 +59,17 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  width: 7.5rem;
+  height: 0.88rem;
+  top: 0.2rem;
+  color: rgba(56, 56, 56, 1);
+  background-color: rgba(255, 255, 255, 1);
+  font-size: 0.36rem;
+  line-height: 0.88rem;
+  text-align: center;
+  font-weight: bold;
+}
 .order {
   height: 100%;
   display: flex;

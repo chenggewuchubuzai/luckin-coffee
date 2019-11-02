@@ -98,23 +98,6 @@ export default {
       items: [{ text: '人气Top' }, { text: '大师咖啡' }, { text: '零度拿铁' }, { text: '瑞纳冰' }, { text: '经典饮品' }]
     }
   },
-  async created() {
-    let result = await products({ page: 1, per: 5 })
-    this.result = result.data.products
-    this.list = this.result
-    let result2 = await products({ page: 2, per: 5 })
-    this.result2 = result2.data.products
-    this.list2 = this.result2
-    let result3 = await products({ page: 3, per: 5 })
-    this.result3 = result3.data.products
-    this.list3 = this.result3
-    let result4 = await products({ page: 4, per: 5 })
-    this.result4 = result4.data.products
-    this.list4 = this.result4
-    let result5 = await products({ page: 5, per: 5 })
-    this.result5 = result5.data.products
-    this.list5 = this.result5
-  },
 
   components: {},
   data() {
@@ -130,7 +113,7 @@ export default {
     }
   },
   async created() {
-    let result = await products({ page: 1, per: 2 })
+    let result = await products({ page: 1, per: 4 })
     this.result = result.data.products
 
     this.list = this.result
@@ -163,10 +146,6 @@ export default {
 }
 </script>
 <style scoped>
-/*  {
-    margin: 0;
-    padding: 0;
-  } */
 .ban img {
   width: 100%;
   height: 2.6rem;
@@ -177,7 +156,6 @@ h1 {
   height: 0.88rem;
   line-height: 0.88rem;
 }
-
 .menu {
   width: 100%;
   height: 100%;

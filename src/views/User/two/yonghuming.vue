@@ -6,12 +6,20 @@
       <input type="text" placeholder="输入用户名" v-model="value" />
     </div>
     <van-button
-      type="info"
       class="btn"
-      @click="$router.push({name:'Geren',query:{
-        t:value
-    }})"
-    >确定</van-button>
+      type="info"
+      style="width:6.9rem;height:0.8rem;margin:0.6rem 0.3rem;"
+      @click="
+        $router.push({
+          name: 'Geren',
+          query: {
+            t: value
+          }
+        })
+      "
+      color="rgba(144, 192, 239, 1)"
+      >确定</van-button
+    >
   </div>
 </template>
 <script>
@@ -37,15 +45,17 @@ export default {
 }
 label {
   font-size: 0.35rem;
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
+  margin-left: 0.9rem;
+  margin-right: 0.6rem;
   margin-top: 0.3;
 }
 input {
   border: 0;
   outline: none;
-  height: 1rem;
-  width: 5rem;
+  height: 0.7rem;
+  width: 4rem;
+  font-size: 0.3rem;
+  text-align: center;
 }
 .btn {
   width: 6rem;

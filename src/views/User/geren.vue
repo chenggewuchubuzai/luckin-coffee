@@ -1,17 +1,6 @@
 <template>
   <div class="ge">
-<<<<<<< HEAD
-    <!-- <van-row type="flex" justify="center" class="top">
-      <van-col span="6" class>
-        <img src="../../assets/jiantou.svg" alt class="jian" @click="geren()" />
-      </van-col>
-      <van-col span="6">个人资料</van-col>
-      <van-col span="6"></van-col>
-    </van-row>-->
-    <van-nav-bar title="个人资料" left-arrow @click-left="geren()" />
-=======
     <van-nav-bar title="个人资料" id="top" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
->>>>>>> b6166502c05cacee41cbdcd74ec4d55550df7495
     <div class="centers">
       <div class="center">
         <span>头像</span>

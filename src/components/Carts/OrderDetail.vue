@@ -1,6 +1,6 @@
 <template>
   <div class="orderDetail">
-    <div class="info" style="min-height: 10rem;">
+    <div class="info">
       <ul>
         <li>
           <span>外卖订单:33412823848583</span>
@@ -61,7 +61,7 @@ export default {
 
 <style scoped>
 .info {
-  height: 4.5rem;
+  min-height: 2rem;
   background: #fff;
   margin-top: 0.21rem;
 }
