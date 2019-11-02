@@ -19,10 +19,6 @@ import Fapiao from '../views/User/fapiao.vue'
 import Dingdan from '../views/User/two/dingdan.vue'
 import Qiye from '../views/User/two/qiye.vue'
 import yonghuming from '../views/User/two/yonghuming.vue'
-<<<<<<< HEAD
-
-=======
->>>>>>> b59d93a020df2d872dece60586007c63aff467bd
 import Erweima from '../views/User/two/three/erweima.vue'
 import cos from '../views/User/two/three/v.vue'
 import Cofferchong from '../views/User/two/three/cofferchong.vue'
@@ -31,11 +27,9 @@ import Welcome from '../views/Welcome/Welcome'
 import Shouhuo from '../views/User/two/three/shouhuo.vue'
 import Adress from '../views/User/two/three/myadress.vue'
 import Delivery from '../views/Carts/delivery.vue'
+import Adeess from '../views/Carts/adress.vue'
+import Edit from '../views/Carts/edit.vue'
 
-<<<<<<< HEAD
-
-=======
->>>>>>> b59d93a020df2d872dece60586007c63aff467bd
 Vue.use(VueRouter)
 
 const routes = [
@@ -77,6 +71,21 @@ const routes = [
     path: '/delivery',
     name: 'Delivery',
     component: Delivery,
+    meta: {
+      isHide: true
+    }
+  }, {
+    path: 'edit',
+    name: 'Edeit',
+    component: Edit,
+    meta: {
+      isHide: true
+    }
+  },
+  {
+    path: '/address',
+    name: 'Adeess',
+    component: Adeess,
     meta: {
       isHide: true
     }
@@ -215,12 +224,8 @@ const routes = [
     name: 'yonghuming',
     component: yonghuming
   },
-<<<<<<< HEAD
-  , {
-=======
 
   {
->>>>>>> b59d93a020df2d872dece60586007c63aff467bd
     path: '/coffer/erweima',
     name: 'Erweima',
     component: Erweima
