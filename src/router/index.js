@@ -119,7 +119,7 @@ const routes = [
     component: Carts
   },
   {
-    path: '/confirm',
+    path: '/confirm/:id',
     name: 'Confirm',
     component: Confirm,
     meta: {

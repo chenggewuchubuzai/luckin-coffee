@@ -40,6 +40,10 @@ export default {
     this.loadAddressList()
   },
   methods: {
+    checkOver(id) {
+      this.$router.push({ name: 'Confirm', params: { id: id } })
+      console.log('ok')
+    },
     addBtn() {
       this.$router.push('/address')
     },
