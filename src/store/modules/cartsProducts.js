@@ -32,7 +32,7 @@ export default {
         state.zy += state.buyArr[i].product.price * state.buyArr[i].quantity + 6
       }
     },
-    clearArr(state) {
+    clearArr(state, payload) {
       state.buyArr = []
     },
     getDate(state, payload) {

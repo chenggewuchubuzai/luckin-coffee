@@ -27,8 +27,9 @@ import Welcome from '../views/Welcome/Welcome'
 import Shouhuo from '../views/User/two/three/shouhuo.vue'
 import Adress from '../views/User/two/three/myadress.vue'
 import Delivery from '../views/Carts/delivery.vue'
-import Adeess from '../views/Carts/adress.vue'
+import Address from '../views/Carts/adress.vue'
 import Edit from '../views/Carts/edit.vue'
+import { getToken } from '../utils/token'
 
 Vue.use(VueRouter)
 
@@ -74,9 +75,10 @@ const routes = [
     meta: {
       isHide: true
     }
-  }, {
-    path: 'edit',
-    name: 'Edeit',
+  },
+  {
+    path: '/edit',
+    name: 'Edit',
     component: Edit,
     meta: {
       isHide: true
@@ -84,8 +86,8 @@ const routes = [
   },
   {
     path: '/address',
-    name: 'Adeess',
-    component: Adeess,
+    name: 'Address',
+    component: Address,
     meta: {
       isHide: true
     }
@@ -121,7 +123,8 @@ const routes = [
     name: 'Confirm',
     component: Confirm,
     meta: {
-      isHide: true
+      isHide: true,
+      need: true
     }
   },
   {
@@ -264,5 +267,17 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+/* router.beforeEach((to, from, next) => {
+  if (to.meta.need) {
+    if (getToken()) {
+      next()
+    } else {
+      this.router.push({ name: 'Login' })
+    }
+  } else {
+    next()
+  }
+}) */
 
 export default router

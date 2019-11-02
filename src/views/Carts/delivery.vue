@@ -8,10 +8,10 @@
         <span>管理我的收获地址</span>
       </p>
       <div class="centern" v-for="item in addList" :key="item._id">
-        <p id="p">{{item.regions}}</p>
+        <p id="p">{{ item.regions }}</p>
         <van-tag type="primary">公司</van-tag>
-        <span>{{item.receiver}}</span>
-        <span>{{item.mobile}}</span>
+        <span>{{ item.receiver }}</span>
+        <span>{{ item.mobile }}</span>
         <!-- <p class="foot">{{item.updatedAt}}</p> -->
         <van-icon name="setting-o" class="edit" @click="edits(item._id)" />
         <van-icon name="clear" class="clear" @click="clearr(item._id)" />
@@ -50,7 +50,7 @@ export default {
       this.$router.push('/address')
     },
     onClickLeft() {
-      this.$router.push('/address')
+      this.$router.push({ name: 'Confirm' })
     },
     async clearr(id) {
       let res = await delAddress(id)
@@ -66,7 +66,7 @@ export default {
     },
     edits(id) {
       //console.log(id)
-      this.$router.push({ name: 'Edeit', params: { id: id } })
+      this.$router.push({ name: 'Edit', params: { id: id } })
     }
   }
 }

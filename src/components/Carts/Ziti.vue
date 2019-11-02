@@ -7,7 +7,7 @@
         <p class="time">约<span>14:42</span>可取</p>
       </div>
     </div>
-    <div class="orderInfo" style="min-height: 5rem; overflow: auto;">
+    <div class="orderInfo">
       <div class="addressInfo">
         <div class="address">
           <p>自提门店</p>
@@ -18,41 +18,38 @@
       </div>
       <div class="info">
         <p>订单信息</p>
-        <div class="detail" v-for="(i,index) in buyArr" :key="index">
-          <div class="product" >
-            <p>{{i.product.name}}</p>
+        <div class="detail" v-for="(i, index) in buyArr" :key="index">
+          <div class="product">
+            <p>{{ i.product.name }}</p>
             <p>大/单份糖/单份奶/热</p>
           </div>
-          <span class="num">{{i.quantity}}</span>
-          <span class="price">￥{{i.product.price}}</span>
+          <span class="num">x{{ i.quantity }}</span>
+          <span class="price">￥{{ i.product.price }}</span>
         </div>
       </div>
-      <div class="total">合计：<span>￥{{total}}</span></div>
+      <div class="total">
+        合计：<span>￥{{ total }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations,mapState } from 'vuex'
-
-
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'Ziti',
   data() {
     return {
-      checked: false,
-      
+      checked: false
     }
   },
   computed: {
-    ...mapState('cartsProducts',['buyArr','total',])
+    ...mapState('cartsProducts', ['buyArr', 'total'])
   },
   methods: {
-    ...mapMutations('isDelivery', ['change']),
-  
-  },
-    
+    ...mapMutations('isDelivery', ['change'])
+  }
 }
 </script>
 
@@ -86,17 +83,18 @@ export default {
   color: rgba(136, 175, 213, 1);
 }
 .orderInfo {
-  height: 4rem;
+  /*  height: 4rem; */
+  min-height: 4rem;
   margin: 0.2rem 0;
   background: #fff;
 }
 .addressInfo {
   display: flex;
   justify-content: space-between;
-  height: 1.38rem;
+  /* height: 1.38rem; */
   width: 6.9rem;
   color: rgba(56, 56, 56, 1);
-  padding: 0.16rem 0.3rem 0;
+  padding: 0.16rem 0.3rem 0.1rem;
   border-bottom: 1px solid rgba(128, 128, 128, 0.1);
 }
 img {
@@ -123,6 +121,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 0.8rem;
 }
 .product > p:nth-of-type(1) {
   font-size: 0.28rem;

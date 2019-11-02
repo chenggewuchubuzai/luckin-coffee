@@ -6,7 +6,7 @@
           <span>外卖订单:33412823848583</span>
           <span>{{ date }}</span>
         </li>
-        <li v-for="(i,index) in buyArr" :key="index">
+        <li v-for="(i, index) in buyArr" :key="index">
           <div class="product">
             <p class="product-name">{{ i.product.name }}</p>
             <p>大/单份糖/单份奶/热</p>
@@ -14,7 +14,7 @@
           <span class="num">x{{ i.quantity }}</span>
           <span class="price">￥{{ i.product.price }}</span>
         </li>
-        <li>
+        <li v-if="isOutside">
           <span>配送费</span>
           <span class="price">￥6</span>
         </li>
@@ -41,79 +41,79 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+import { mapState } from 'vuex'
 
-  export default {
-    data() {
-      return {}
-    },
+export default {
+  data() {
+    return {}
+  },
 
-    name: 'OrderDetail',
-    computed: {
-      ...mapState('cartsProducts', ['buyArr', 'total', 'zy', 'date']),
-      ...mapState('isDelivery', ['isOutside'])
-    },
-    created() {
-      console.log(this.buyArr)
-    }
+  name: 'OrderDetail',
+  computed: {
+    ...mapState('cartsProducts', ['buyArr', 'total', 'zy', 'date']),
+    ...mapState('isDelivery', ['isOutside'])
+  },
+  created() {
+    console.log(this.buyArr)
   }
+}
 </script>
 
 <style scoped>
-  .info {
-    height: 4.5rem;
-    background: #fff;
-    margin-top: 0.21rem;
-  }
-  li {
-    height: 1rem;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0.3rem;
-    align-items: center;
-    border-bottom: 1px solid rgba(166, 166, 166, 0.1);
-  }
-  li:nth-of-type(1),
-  li:nth-of-type(3) {
-    height: 0.8rem;
-    color: rgba(128, 128, 128, 1);
-  }
-  li:nth-of-type(2) {
-    border-bottom: none;
-    height: 0.8rem;
-  }
-  li:nth-last-child(1) {
-    color: rgba(56, 56, 56, 1);
-  }
-  .product-name {
-    color: rgba(56, 56, 56, 1);
-    font-size: 0.28rem;
-    font-weight: bold;
-  }
-  .price {
-    font-weight: bold;
-    font-size: 0.28rem;
-  }
-  .address {
-    height: 1.4rem;
-    margin: 0.2rem 0;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    font-size: 0.28rem;
-    color: rgba(80, 80, 80, 1);
-  }
-  .address p {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0.3rem;
-  }
-  .name {
-    margin-left: 4rem;
-  }
-  .banner,
-  img {
-    height: 1.2rem;
-  }
+.info {
+  height: 4.5rem;
+  background: #fff;
+  margin-top: 0.21rem;
+}
+li {
+  height: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.3rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(166, 166, 166, 0.1);
+}
+li:nth-of-type(1),
+li:nth-of-type(3) {
+  height: 0.8rem;
+  color: rgba(128, 128, 128, 1);
+}
+li:nth-of-type(2) {
+  border-bottom: none;
+  height: 0.8rem;
+}
+li:nth-last-child(1) {
+  color: rgba(56, 56, 56, 1);
+}
+.product-name {
+  color: rgba(56, 56, 56, 1);
+  font-size: 0.28rem;
+  font-weight: bold;
+}
+.price {
+  font-weight: bold;
+  font-size: 0.28rem;
+}
+.address {
+  height: 1.4rem;
+  margin: 0.2rem 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 0.28rem;
+  color: rgba(80, 80, 80, 1);
+}
+.address p {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.3rem;
+}
+.name {
+  margin-left: 4rem;
+}
+.banner,
+img {
+  height: 1.2rem;
+}
 </style>

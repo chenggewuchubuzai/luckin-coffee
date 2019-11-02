@@ -2,14 +2,7 @@
   <div class="app">
     <van-nav-bar title="地址" left-arrow @click-left="onClickLeft" />
 
-    <van-field
-      required
-      clearable
-      label="姓名"
-      right-icon="question-o"
-      placeholder="请输入用户名"
-      v-model="receiver"
-    />
+    <van-field required clearable label="姓名" right-icon="question-o" placeholder="请输入用户名" v-model="receiver" />
     <van-radio-group v-model="radio" class="radio">
       <label>性别</label>
       <van-radio name="1">先生</van-radio>
@@ -53,10 +46,10 @@ export default {
       }
       let res = await addAddress(adress)
       console.log(res)
-      this.$router.push('/delivery')
+      this.$router.push({ name: 'Delivery' })
     },
     onClickLeft() {
-      this.$router.push('/confirm')
+      this.$router.push({ name: 'Delivery' })
     }
   }
 }

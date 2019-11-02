@@ -73,12 +73,13 @@
             <img src="../../assets/jiantou.svg" alt class="jiantou" />
           </div>
         </li>
-        <van-button type="primary" class="btn">退出登录</van-button>
+        <van-button type="primary" @click="Exit()" class="btn">退出登录</van-button>
       </ul>
     </div>
   </div>
 </template>
 <script>
+import { getToken, removeToken } from '../../utils/token'
 export default {
   data() {
     return {
@@ -123,6 +124,12 @@ export default {
     },
     shouhuo() {
       this.$router.push('/shouhuo')
+    },
+    Exit() {
+      if (getToken()) {
+        removeToken()
+        this.$router.push({ name: 'User' })
+      }
     }
   }
 }

@@ -46,7 +46,7 @@ export default {
       // console.log(id)
       const result = await delOrder(id)
       console.log(result)
-      // this.loadOrderData()
+      this.loadOrderData()
     }
   }
 }

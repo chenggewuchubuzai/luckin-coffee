@@ -7,9 +7,9 @@
         <p class="time">约<span>14:52</span>送达</p>
       </div>
     </div>
-    <div class="orderInfo" style="min-height: 5rem; overflow: auto;">
-      <div class="addressInfo">
-        <div class="address" @click='goAdress'>
+    <div class="orderInfo">
+      <div class="addressInfo" @click="goAddress()">
+        <div class="address">
           <p>配送信息</p>
           <p><img src="../../assets/icon1.svg" alt="" />北京时朝阳区青年汇佳园10号楼102...</p>
           <p><img src="../../assets/icon2.svg" alt="" />134******5789</p>
@@ -18,27 +18,28 @@
       </div>
       <div class="info">
         <p>订单信息</p>
-        <div class="detail" v-for="(i,index) in buyArr" :key="index">
+        <div class="detail" v-for="(i, index) in buyArr" :key="index">
           <div class="product">
-            <p>{{i.product.name}}</p>
+            <p>{{ i.product.name }}</p>
             <p>大/单份糖/单份奶/热</p>
           </div>
-          <span class="num">{{i.quantity}}</span>
-          <span class="price">￥{{i.product.price}}</span>
+          <span class="num">x{{ i.quantity }}</span>
+          <span class="price">￥{{ i.product.price }}</span>
         </div>
         <div class="delivery-cost">
           <span>配送费</span>
           <span class="price">￥6</span>
         </div>
       </div>
-      <div class="total">合计：<span>￥{{zy}}</span></div>
+      <div class="total">
+        合计：<span>￥{{ zy }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations ,mapState} from 'vuex'
-
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'Outside',
@@ -48,14 +49,13 @@ export default {
     }
   },
   computed: {
-    ...mapState('cartsProducts',['total','buyArr','zy'])
+    ...mapState('cartsProducts', ['total', 'buyArr', 'zy'])
   },
   methods: {
-    goAdress(){
-      this.$router.push('/')
+    goAddress() {
+      this.$router.push({ name: 'Delivery' })
     },
     ...mapMutations('isDelivery', ['change'])
-    
   }
 }
 </script>
@@ -93,17 +93,18 @@ export default {
   color: rgba(136, 175, 213, 1);
 }
 .orderInfo {
-  height: 5.59rem;
+  /* height: 5.59rem; */
+  min-height: 5.59rem;
   margin: 0.2rem 0;
   background: #fff;
 }
 .addressInfo {
   display: flex;
   justify-content: space-between;
-  height: 1.4rem;
+  /* height: 1.4rem; */
   width: 6.9rem;
   color: rgba(56, 56, 56, 1);
-  padding: 0.16rem 0.3rem 0;
+  padding: 0.16rem 0.3rem 0.1rem;
   border-bottom: 1px solid rgba(128, 128, 128, 0.1);
 }
 img {
