@@ -75,7 +75,7 @@ const routes = [
       isHide: true
     }
   }, {
-    path: 'edit',
+    path: '/edit/:id',
     name: 'Edeit',
     component: Edit,
     meta: {

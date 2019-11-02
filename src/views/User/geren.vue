@@ -1,12 +1,13 @@
 <template>
   <div class="ge">
-    <van-row type="flex" justify="center" class="top">
+    <!-- <van-row type="flex" justify="center" class="top">
       <van-col span="6" class>
         <img src="../../assets/jiantou.svg" alt class="jian" @click="geren()" />
       </van-col>
       <van-col span="6">个人资料</van-col>
       <van-col span="6"></van-col>
-    </van-row>
+    </van-row>-->
+    <van-nav-bar title="个人资料" left-arrow @click-left="geren()" />
     <div class="centers">
       <div class="center">
         <span>头像</span>
