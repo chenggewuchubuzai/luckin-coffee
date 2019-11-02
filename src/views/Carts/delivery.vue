@@ -7,7 +7,7 @@
         <span>我的收货地址</span>
         <span>管理我的收获地址</span>
       </p>-->
-      <div class="centern" v-for="item in addList" :key="item._id">
+      <div class="centern" v-for="item in addList" :key="item._id" @click='checkOver(item._id)' >
         <p id="p">{{ item.regions }}</p>
         <van-tag type="primary">公司</van-tag>
         <span>{{ item.receiver }}</span>
@@ -46,6 +46,11 @@ export default {
     this.loadAddressList()
   },
   methods: {
+    checkOver(id){
+      this.$router.push({name:'Confirm',params:{ id: id }})
+      console.log('ok')
+    },
+
     addbtn() {
       this.$router.push('/address')
     },
