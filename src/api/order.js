@@ -12,5 +12,5 @@ export const subOrder = order => {
 
 //根据id删除订单
 export const delOrder = id => {
-  return del(`/api/v1/orders${id}`)
+  return del(`/api/v1/orders/${id}`)
 }

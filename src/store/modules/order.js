@@ -1,4 +1,4 @@
-import { orderList } from '../../api/order'
+import { orderList, delOrder } from '../../api/order'
 
 export default {
   namespaced: 'true',
@@ -19,7 +19,9 @@ export default {
   },
   actions: {
     async loadOrderData({ commit }, payload) {
-      const result = await orderList()
+      const result = await orderList({
+        per: 100
+      })
       const order = result.data.orders
       console.log(order)
       commit('save', order)

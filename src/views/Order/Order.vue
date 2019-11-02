@@ -1,6 +1,6 @@
 <template>
   <div class="order">
-    <van-nav-bar title="订单列表"></van-nav-bar>
+    <van-nav-bar title="订单列表" id="title"></van-nav-bar>
     <section>
       <van-tabs
         v-model="active"

@@ -8,10 +8,10 @@
         </p>
         <div class="detail">
           <p class="address">
-            <span>{{ item.address }}</span
+            <span>{{ item.regions }}</span
             ><span>{{ item.createdAt }}</span>
           </p>
-          <p class="product">榛果拿铁等 共1件商品</p>
+          <p class="product">榛果拿铁等 共{{ item.address }}件商品</p>
         </div>
         <p class="price">
           <span>￥{{ item.price }}</span
@@ -74,13 +74,17 @@ li {
   display: flex;
   justify-content: space-between;
 }
+.address span:nth-of-type(1) {
+  width: 3.6rem;
+}
 .address span:nth-of-type(2) {
   color: rgba(166, 166, 166, 1);
   font-size: 0.2rem;
+  width: 2.6rem;
 }
 .product {
   color: rgba(80, 80, 80, 1);
-  font-size: 0.26rem;
+  font-size: 0.2rem;
 }
 .price {
   display: flex;

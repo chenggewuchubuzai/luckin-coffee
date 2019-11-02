@@ -54,7 +54,7 @@
     </ul>
     <router-link :to="{ name: 'Qiye' }">
       <p class="help">
-        <span>帮组反馈</span>
+        <span>帮助反馈</span>
       </p>
     </router-link>
     <div class="tu">
@@ -77,7 +77,7 @@ export default {
   async created() {
     if (getToken()) {
       const result = await getInfo()
-      console.log(result)
+      // console.log(result)
       this.username = result.data.userName
     }
   },
