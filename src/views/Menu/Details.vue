@@ -1,5 +1,5 @@
 <template>
-  <div class="detailss">
+  <div class="details">
     <div class="section">
       <div class="pic">
         <img :src="goods.coverImg" style="height:260px" alt="" />
@@ -45,7 +45,6 @@
         <h3 style="margin:0.2rem ;">商品详情</h3>
         <p style="font-size: 0.3rem;text-indent:2em">{{ goods.descriptions }}</p>
       </div>
-
       <!-- <div style="height:100px"></div> -->
     </div>
     <!--  <div class="pri">
@@ -78,11 +77,11 @@ export default {
   },
   async created() {
     let id = this.$route.params.id
-    console.log(id)
+    // console.log(id)
     let result = await getProductById(id)
-    console.log(result)
+    // console.log(result)
     this.goods = result.data
-    console.log(this.goods)
+    // console.log(this.goods)
   },
   name: 'Details',
   methods: {

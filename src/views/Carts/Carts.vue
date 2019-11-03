@@ -21,7 +21,7 @@
 import CartsProduct from '@/components/Carts/CartsProduct'
 import RecommendProduct from '@/components/Carts/RecommendProduct'
 import Empty from '@/components/Carts/Empty'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { getToken } from '../../utils/token'
 
 export default {
@@ -34,12 +34,15 @@ export default {
   created() {
     if (getToken()) {
       this.loadCartData(), this.loadData()
+      this.clearArr()
+      this.count()
     }
   },
   computed: {
     ...mapState('cartsProducts', ['cartsList', 'total'])
   },
   methods: {
+    ...mapMutations('cartsProducts', ['count', 'clearArr']),
     ...mapActions('cartsProducts', ['loadCartData']),
     ...mapActions('loveProducts', ['loadData'])
   }

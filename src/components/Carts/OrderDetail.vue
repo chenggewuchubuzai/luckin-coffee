@@ -9,7 +9,7 @@
         <li v-for="(i, index) in buyArr" :key="index">
           <div class="product">
             <p class="product-name">{{ i.product.name }}</p>
-            <p>大/单份糖/单份奶/热</p>
+            <p class="tip">大/单份糖/单份奶/热</p>
           </div>
           <span class="num">x{{ i.quantity }}</span>
           <span class="price">￥{{ i.product.price }}</span>
@@ -47,14 +47,13 @@ export default {
   data() {
     return {}
   },
-
   name: 'OrderDetail',
   computed: {
     ...mapState('cartsProducts', ['buyArr', 'total', 'zy', 'date']),
     ...mapState('isDelivery', ['isOutside'])
   },
   created() {
-    console.log(this.buyArr)
+    // console.log(this.buyArr)
   }
 }
 </script>
@@ -74,7 +73,7 @@ li {
   border-bottom: 1px solid rgba(166, 166, 166, 0.1);
 }
 li:nth-of-type(1),
-li:nth-of-type(3) {
+.tip {
   height: 0.8rem;
   color: rgba(128, 128, 128, 1);
 }

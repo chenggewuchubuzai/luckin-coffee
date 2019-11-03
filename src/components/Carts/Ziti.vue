@@ -84,7 +84,7 @@ export default {
 }
 .orderInfo {
   /*  height: 4rem; */
-  min-height: 4rem;
+  min-height: 3rem;
   margin: 0.2rem 0;
   background: #fff;
 }

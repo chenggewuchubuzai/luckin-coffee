@@ -1,8 +1,8 @@
 <template>
   <div class="app">
-    <van-nav-bar title="地址" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar title="地址" left-arrow @click-left="onClickLeft()" />
     <div class="main">
-      <div class="center" v-for="item in addList" :key="item._id">
+      <div class="center" @click="checkOver(item._id)" v-for="item in addList" :key="item._id">
         <p class="address">{{ item.regions }}</p>
         <span>{{ item.receiver }}</span>
         <span>{{ item.mobile }}</span>
@@ -47,7 +47,7 @@ export default {
     addBtn() {
       this.$router.push('/address')
     },
-    onClickLeft() {
+    onClickLeft(i) {
       this.$router.push({ name: 'Confirm' })
     },
     async del(id) {

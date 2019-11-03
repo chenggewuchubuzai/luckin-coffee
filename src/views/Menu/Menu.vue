@@ -1,7 +1,6 @@
 <template>
   <div class="menu">
     <h1>选择饮品和小食</h1>
-
     <div class="section">
       <van-swipe :autoplay="3000" indicator-color="white" class="ban">
         <van-swipe-item><img src="../../assets/v-banner1.jpg" alt=""/></van-swipe-item>

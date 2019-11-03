@@ -11,8 +11,8 @@
       <div class="addressInfo" @click="goAddress()">
         <div class="address">
           <p>配送信息</p>
-          <p><img src="../../assets/icon1.svg" alt="" />{{Address.regions}}</p>
-          <p><img src="../../assets/icon2.svg" alt="" />{{Address.mobile}}                      {{Address.receiver}}</p>
+          <p><img src="../../assets/icon1.svg" alt="" />{{ Address.regions }}</p>
+          <p><img src="../../assets/icon2.svg" alt="" />{{ Address.mobile }} {{ Address.receiver }}</p>
         </div>
         <img src="../../assets/jt.svg" alt="" />
       </div>
@@ -33,7 +33,6 @@
       </div>
       <div class="total">
         合计：<span>￥{{ zy }}</span>
-      
       </div>
     </div>
   </div>
@@ -41,16 +40,14 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import {address} from '../../api/address'
+import { address } from '../../api/address'
 
 export default {
- 
-  
   name: 'Outside',
   data() {
     return {
       checked: true,
-      Address:{},
+      Address: {}
     }
   },
   computed: {
@@ -62,14 +59,10 @@ export default {
     },
     ...mapMutations('isDelivery', ['change'])
   },
-  async created(){
-    
-    let result=await address(this.$route.params.id)
-     this.Address=result.data
-     console.log(this.Address)
-
-    
-    
+  async created() {
+    let result = await address(this.$route.params.id)
+    this.Address = result.data
+    // console.log(this.Address)
   }
 }
 </script>
@@ -108,7 +101,7 @@ export default {
 }
 .orderInfo {
   /* height: 5.59rem; */
-  min-height: 5.59rem;
+  min-height: 4rem;
   margin: 0.2rem 0;
   background: #fff;
 }

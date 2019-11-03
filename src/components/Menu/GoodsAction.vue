@@ -1,7 +1,7 @@
 <template>
   <van-goods-action>
     <van-goods-action-button type="info" text="充2赠1" />
-    <van-goods-action-button type="warning" text="立即购买" @click="onClickButton()" />
+    <van-goods-action-button type="warning" text="立即购买" @click="onClickButton(proId)" />
     <van-goods-action-button type="danger" text="加入购物车" @click="onClickButton2(proId)" />
   </van-goods-action>
 </template>
@@ -14,8 +14,8 @@ export default {
   props: ['proId'],
   methods: {
     ...mapActions('cartsProducts', ['loadCartData']),
-    onClickButton() {
-      this.$router.push('/confirm')
+    onClickButton(id) {
+      this.$router.push({ name: 'Confirm' })
     },
     async onClickButton2(id) {
       const result = await addToCarts(id)
