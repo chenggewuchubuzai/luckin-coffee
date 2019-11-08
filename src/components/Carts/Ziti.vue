@@ -20,11 +20,11 @@
         <p>订单信息</p>
         <div class="detail" v-for="(i, index) in buyArr" :key="index">
           <div class="product">
-            <p>{{ i.product.name }}</p>
+            <p>{{ i.name ? i.name : i.product.name }}</p>
             <p>大/单份糖/单份奶/热</p>
           </div>
           <span class="num">x{{ i.quantity }}</span>
-          <span class="price">￥{{ i.product.price }}</span>
+          <span class="price">￥{{ i.price ? i.price : i.product.price }}</span>
         </div>
       </div>
       <div class="total">

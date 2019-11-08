@@ -4,7 +4,7 @@
     <div class="payment">
       <div class="payInfo">
         <p>订单付款</p>
-        <p>￥{{ isOutside ? zy : total }}</p>
+        <p>￥{{ isOutside ? total + 6 : total }}</p>
       </div>
       <div class="payee">
         <span>收款方</span>
@@ -26,74 +26,107 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { subOrder } from '../../api/order'
+import { address } from '../../api/address.js'
+import { getInfo } from '../../api/user'
+import { getToken } from '../../utils/token'
 
 export default {
+  data() {
+    return {
+      Address: {}
+    }
+  },
   name: 'Pay',
   methods: {
     ...mapMutations('cartsProducts', ['clearArr', 'getDate']),
     async onClickLeft() {
-      let order1 = {
-        isPayed: false,
-        receiver: '张岩',
-        regions: '河南省郑州市',
-        address: '高新区教育产业园D栋千峰教育'
+      if (this.$route.params.id) {
+        let result = await address(this.$route.params.id)
+        console.log(result)
+        let order1 = {
+          receiver: result.data.receiver,
+          regions: result.data.regions,
+          address: false
+        }
+        order1.orderDetails = []
+        this.buyArr.forEach(v => {
+          let obj1 = {}
+          obj1.quantity = v.quantity
+          obj1.product = v._id ? v._id : v.product._id
+          obj1.price = this.isOutside ? this.total + 6 : this.total
+          order1.orderDetails.push(obj1)
+        })
+        let res = await subOrder(order1)
+        console.log(res.data)
+      } else {
+        if (getToken()) {
+          const result = await getInfo()
+          // console.log(result)
+          let order1 = {
+            receiver: result.data.userName,
+            regions: '朝阳区朝阳北路青年汇102号楼一层123室',
+            address: false
+          }
+          order1.orderDetails = []
+          this.buyArr.forEach(v => {
+            let obj1 = {}
+            obj1.quantity = v.quantity
+            obj1.product = v._id ? v._id : v.product._id
+            obj1.price = this.isOutside ? this.total + 6 : this.total
+            order1.orderDetails.push(obj1)
+          })
+          let res = await subOrder(order1)
+          console.log(res.data)
+        }
       }
-      order1.orderDetails = []
-      this.buyArr.forEach(v => {
-        let obj1 = {}
-        ;(obj1.quantity = v.quantity), (obj1.product = v.product._id), (obj1.price = v.product.price)
-        order1.orderDetails.push(obj1)
-      })
-      let res = await subOrder(order1)
-      console.log(res)
 
       this.$router.push({
         name: 'Cancel'
       })
-      // console.log(this.getdate())
-      //  this.clearArr()
     },
-    // getdate(){
-    //   let nowDate = new Date();
-    //    let date = {
-    //   year: nowDate.getFullYear(),
-    //   month: nowDate.getMonth() + 1,
-    //   date: nowDate.getDate(),
-    //   hour:nowDate.getHours(),
-    //   min:nowDate.getMinutes(),
-    //   sec:nowDate.getSeconds()
-    //   }
-    //   // console.log(date);
-    //    let systemDate = date.year + '-' + date.month + '-' + date.date +' '+date.hour+':'+'0'+date.min+':'+date.sec;
-    //   // console.log(systemDate)
-    //   return systemDate
-    // },
     async downOrder() {
-      let order = {
-        isPayed: true,
-        receiver: '张岩',
-        regions: '河南省郑州市高新区教育产业园D栋千峰教育',
-        address: this.buyArr.length
+      if (this.$route.params.id) {
+        let result = await address(this.$route.params.id)
+        console.log(result.data)
+        let order = {
+          receiver: result.data.receiver,
+          regions: result.data.regions,
+          address: true
+        }
+        order.orderDetails = []
+        this.buyArr.forEach(v => {
+          let obj = {}
+          ;(obj.quantity = v.quantity),
+            (obj.product = v._id ? v._id : v.product._id),
+            (obj.price = this.isOutside ? this.total + 6 : this.total),
+            order.orderDetails.push(obj)
+        })
+        let res = await subOrder(order)
+      } else {
+        if (getToken()) {
+          const result = await getInfo()
+          // console.log(result)
+          let order1 = {
+            receiver: result.data.userName,
+            regions: '朝阳区朝阳北路青年汇102号楼一层123室',
+            address: true
+          }
+          order1.orderDetails = []
+          this.buyArr.forEach(v => {
+            let obj1 = {}
+            obj1.quantity = v.quantity
+            obj1.product = v._id ? v._id : v.product._id
+            obj1.price = this.isOutside ? this.total + 6 : this.total
+            order1.orderDetails.push(obj1)
+          })
+          let res = await subOrder(order1)
+          console.log(res.data)
+        }
       }
-      order.orderDetails = []
-      this.buyArr.forEach(v => {
-        let obj = {}
-        ;(obj.quantity = v.quantity),
-          (obj.product = v.product._id),
-          (obj.price = v.product.price),
-          order.orderDetails.push(obj)
-      })
-      let res = await subOrder(order)
-      /* console.log(res)
-      console.log(this.buyArr) */
-      this.getDate(res.data.info.order.createdAt)
-      // this.clearArr()
-      // console.log(this.buyArr)
-      // console.log(this.getdate())
     }
   },
   computed: {
-    ...mapState('cartsProducts', ['total', 'zy', 'buyArr']),
+    ...mapState('cartsProducts', ['total', 'buyArr']),
     ...mapState('isDelivery', ['isOutside'])
   }
 }

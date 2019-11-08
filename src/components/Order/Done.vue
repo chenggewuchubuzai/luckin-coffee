@@ -11,11 +11,14 @@
             <span>{{ item.regions }}</span
             ><span>{{ item.createdAt }}</span>
           </p>
-          <p class="product">榛果拿铁等 共{{ item.address }}件商品</p>
+          <p class="product">
+            收货人：<span>{{ item.receiver }}</span>
+          </p>
         </div>
         <p class="price">
           <span>￥{{ item.price }}</span
-          ><van-tag plain class="again" size="large" @click="again()">再来一单</van-tag
+          ><van-tag plain size="large" class="delOrder" @click="delOrderHandle(item._id)">删除订单</van-tag>
+          <van-tag plain class="again" size="large" @click="again()">再来一单</van-tag
           ><van-tag plain size="large" type="warning" color="rgba(144, 192, 239, 1)" @click="evaluate()"
             >去评价</van-tag
           >
@@ -26,7 +29,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import { delOrder } from '../../api/order'
 
 export default {
   name: 'Done',
@@ -34,6 +38,7 @@ export default {
     ...mapState('order', ['succeedList'])
   },
   methods: {
+    ...mapActions('order', ['loadOrderData']),
     again() {
       this.$router.push({
         name: 'Menu'
@@ -43,6 +48,12 @@ export default {
       this.$router.push({
         name: 'Evaluate'
       })
+    },
+    async delOrderHandle(id) {
+      // console.log(id)
+      const result = await delOrder(id)
+      console.log(result)
+      this.loadOrderData()
     }
   }
 }
@@ -84,7 +95,12 @@ li {
 }
 .product {
   color: rgba(80, 80, 80, 1);
-  font-size: 0.2rem;
+  font-size: 0.26rem;
+  margin-top: 0.2rem;
+}
+.product span {
+  font-size: 0.3rem;
+  color: #f00;
 }
 .price {
   display: flex;
@@ -95,7 +111,7 @@ li {
   font-size: 0.28rem;
   font-weight: bold;
 }
-.again {
-  margin-left: 3.3rem;
+.delOrder {
+  margin-left: 1.5rem;
 }
 </style>

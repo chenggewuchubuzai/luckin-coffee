@@ -11,7 +11,7 @@
       <div class="total">
         应付合计：<span class="price">￥{{ this.total }}</span>
       </div>
-      <router-link :to="{ name: 'Confirm' }"><span class="toPay">去结算</span></router-link>
+      <span class="toPay" @click="toPay()">去结算</span>
       <router-view />
     </div>
   </div>
@@ -23,6 +23,7 @@ import RecommendProduct from '@/components/Carts/RecommendProduct'
 import Empty from '@/components/Carts/Empty'
 import { mapState, mapActions, mapMutations } from 'vuex'
 import { getToken } from '../../utils/token'
+import { Dialog } from 'vant'
 
 export default {
   name: 'Carts',
@@ -44,7 +45,18 @@ export default {
   methods: {
     ...mapMutations('cartsProducts', ['count', 'clearArr']),
     ...mapActions('cartsProducts', ['loadCartData']),
-    ...mapActions('loveProducts', ['loadData'])
+    ...mapActions('loveProducts', ['loadData']),
+    toPay() {
+      if (this.total == 0) {
+        Dialog.alert({
+          message: '请选择商品'
+        })
+      } else {
+        this.$router.push({
+          name: 'Confirm'
+        })
+      }
+    }
   }
 }
 </script>

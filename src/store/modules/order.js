@@ -8,14 +8,15 @@ export default {
   },
   mutations: {
     save(state, payload) {
-      /*  for (let i = 0; i < payload.length; i++) {
-        if (payload[i].isPayed == true) {
+      ;(state.succeedList = []), (state.unfinishedList = [])
+      for (let i = 0; i < payload.length; i++) {
+        if (payload[i].address == 'true') {
           state.succeedList.push(payload[i])
         } else {
           state.unfinishedList.push(payload[i])
         }
-      } */
-      state.unfinishedList = payload
+      }
+      // state.unfinishedList = payload
     }
   },
   actions: {

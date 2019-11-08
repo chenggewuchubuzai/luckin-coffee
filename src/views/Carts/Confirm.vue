@@ -19,7 +19,7 @@
     </div>
     <van-submit-bar
       id="bottom"
-      :price="isOutside ? zy * 100 : total * 100"
+      :price="isOutside ? (total + 6) * 100 : total * 100"
       label="还需付："
       button-text="去支付"
       button-type="info"
@@ -37,6 +37,7 @@ import Ziti from '../../components/Carts/Ziti'
 import Outside from '../../components/Carts/Outside'
 import Discount from '../../components/Carts/Discounts'
 import { subOrder } from '../../api/order'
+import { Dialog } from 'vant'
 
 export default {
   name: 'Confirm',
@@ -53,7 +54,7 @@ export default {
   },
   computed: {
     ...mapState('isDelivery', ['isOutside']),
-    ...mapState('cartsProducts', ['total', 'zy', 'buyArr'])
+    ...mapState('cartsProducts', ['total', 'buyArr'])
   },
   methods: {
     onClickLeft() {
@@ -62,9 +63,24 @@ export default {
       })
     },
     onSubmit() {
-      this.$router.push({
-        name: 'Pay'
-      })
+      if (this.isOutside) {
+        if (!this.$route.params.id) {
+          Dialog.alert({
+            message: '请选择收货地址'
+          })
+        } else {
+          let ids = this.$route.params.id
+          // console.log(this.buyArr)
+          this.$router.push({
+            name: 'Pay',
+            params: { id: ids }
+          })
+        }
+      } else {
+        this.$router.push({
+          name: 'Pay'
+        })
+      }
     }
   }
 }

@@ -8,13 +8,22 @@
 
 <script>
 import { mapActions, mapState, mapMutations } from 'vuex'
-import { addToCarts } from '../../api/product'
+import { addToCarts, getProductById } from '../../api/product'
 
 export default {
   props: ['proId'],
+  computed: {
+    ...mapState('cartsProducts', ['buyArr'])
+  },
   methods: {
+    ...mapMutations('cartsProducts', ['count']),
     ...mapActions('cartsProducts', ['loadCartData']),
-    onClickButton(id) {
+    async onClickButton(id) {
+      const product = await getProductById(id)
+      console.log(product.data)
+      this.buyArr.push(product.data)
+      console.log(this.buyArr)
+      this.count()
       this.$router.push({ name: 'Confirm' })
     },
     async onClickButton2(id) {

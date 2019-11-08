@@ -12,7 +12,7 @@
             ><span>{{ item.createdAt }}</span>
           </p>
           <p class="product">
-            榛果拿铁等 共 <span>{{ item.address }}</span> 件商品
+            收货人：<span>{{ item.receiver }}</span>
           </p>
         </div>
         <p class="price">

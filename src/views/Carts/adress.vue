@@ -24,6 +24,7 @@
 </template>
 <script>
 import { addAddress } from '../../api/address'
+
 export default {
   data() {
     return {

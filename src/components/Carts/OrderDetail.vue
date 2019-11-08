@@ -8,11 +8,11 @@
         </li>
         <li v-for="(i, index) in buyArr" :key="index">
           <div class="product">
-            <p class="product-name">{{ i.product.name }}</p>
+            <p class="product-name">{{ i.name ? i.name : i.product.name }}</p>
             <p class="tip">大/单份糖/单份奶/热</p>
           </div>
           <span class="num">x{{ i.quantity }}</span>
-          <span class="price">￥{{ i.product.price }}</span>
+          <span class="price">￥{{ i.price ? i.price : i.product.price }}</span>
         </li>
         <li v-if="isOutside">
           <span>配送费</span>
@@ -25,14 +25,20 @@
         <li>
           <p>共{{ buyArr.length }}件商品</p>
           <p>
-            实付<span class="price">￥{{ isOutside ? zy : total }}</span>
+            实付<span class="price">￥{{ isOutside ? total + 6 : total }}</span>
           </p>
         </li>
       </ul>
     </div>
     <div class="address">
-      <p><span>收货地址</span><span>河南省郑州市高新区教育产业园D栋千峰教育</span></p>
-      <p><span class="name">张女士</span><span class="tel">134******5687</span></p>
+      <p>
+        <span>收货地址</span
+        ><span>{{ Address.regions ? Address.regions : '朝阳区朝阳北路青年汇102号楼一层123室' }}</span>
+      </p>
+      <p>
+        <span class="name">{{ Address.receiver }}</span
+        ><span class="tel">{{ Address.mobile }}</span>
+      </p>
     </div>
     <div class="banner">
       <img src="../../assets/banner.png" alt="" />
@@ -42,18 +48,29 @@
 
 <script>
 import { mapState } from 'vuex'
+import { address } from '../../api/address.js'
 
 export default {
   data() {
-    return {}
+    return {
+      Address: {}
+    }
   },
   name: 'OrderDetail',
   computed: {
-    ...mapState('cartsProducts', ['buyArr', 'total', 'zy', 'date']),
+    ...mapState('cartsProducts', ['buyArr', 'total', 'date']),
     ...mapState('isDelivery', ['isOutside'])
   },
   created() {
+    console.log(this.buyArr)
+  },
+  async created() {
     // console.log(this.buyArr)
+    if (this.$route.params.id) {
+      let result = await address(this.$route.params.id)
+      this.Address = result.data
+      console.log(this.Address)
+    }
   }
 }
 </script>

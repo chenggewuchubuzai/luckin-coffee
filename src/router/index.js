@@ -29,7 +29,6 @@ import Adress from '../views/User/two/three/myadress.vue'
 import Delivery from '../views/Carts/delivery.vue'
 import Address from '../views/Carts/adress.vue'
 import Edit from '../views/Carts/edit.vue'
-import { getToken } from '../utils/token'
 
 Vue.use(VueRouter)
 
@@ -119,7 +118,7 @@ const routes = [
     component: Carts
   },
   {
-    path: '/confirm/:id',
+    path: '/confirm/:id?',
     name: 'Confirm',
     component: Confirm,
     meta: {
@@ -128,7 +127,7 @@ const routes = [
     }
   },
   {
-    path: '/pay',
+    path: '/pay/:id?',
     name: 'Pay',
     component: Pay,
     meta: {
@@ -136,7 +135,7 @@ const routes = [
     }
   },
   {
-    path: '/succeed',
+    path: '/succeed/:id',
     name: 'Succeed',
     component: Succeed,
     meta: {

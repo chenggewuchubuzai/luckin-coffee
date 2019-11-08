@@ -20,11 +20,11 @@
         <p>订单信息</p>
         <div class="detail" v-for="(i, index) in buyArr" :key="index">
           <div class="product">
-            <p>{{ i.product.name }}</p>
+            <p>{{ i.name ? i.name : i.product.name }}</p>
             <p>大/单份糖/单份奶/热</p>
           </div>
           <span class="num">x{{ i.quantity }}</span>
-          <span class="price">￥{{ i.product.price }}</span>
+          <span class="price">￥{{ i.price ? i.price : i.product.price }}</span>
         </div>
         <div class="delivery-cost">
           <span>配送费</span>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="total">
-        合计：<span>￥{{ zy }}</span>
+        合计：<span>￥{{ total + 6 }}</span>
       </div>
     </div>
   </div>
@@ -51,12 +51,13 @@ export default {
     }
   },
   computed: {
-    ...mapState('cartsProducts', ['total', 'buyArr', 'zy'])
+    ...mapState('cartsProducts', ['total', 'buyArr'])
   },
   methods: {
     goAddress() {
       this.$router.push({ name: 'Delivery' })
     },
+    ...mapMutations('cartsProducts', ['count']),
     ...mapMutations('isDelivery', ['change'])
   },
   async created() {

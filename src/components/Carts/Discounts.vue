@@ -5,16 +5,13 @@
         <span>使用优惠</span>
         <van-switch v-model="checked" size="medium" />
       </li>
-      <router-link :to="{ name: 'Carts' }">
-        <li>
-          <span>使用咖啡钱包</span><span class="right">1个可用</span><img class="jt" src="../../assets/jt.svg" alt="" />
-        </li>
-      </router-link>
-      <router-link :to="{ name: 'Carts' }">
-        <li>
-          <span>使用优惠券</span><span class="right">6个可用</span
-          ><img class="jt" src="../../assets/jt.svg" alt="" /></li
-      ></router-link>
+      <li @click="toCoffer">
+        <span>使用咖啡钱包</span><span class="right">1个可用</span><img class="jt" src="../../assets/jt.svg" alt="" />
+      </li>
+
+      <li @click="nextqiye">
+        <span>使用优惠券</span><span class="right">6个可用</span><img class="jt" src="../../assets/jt.svg" alt="" />
+      </li>
       <router-link :to="{ name: 'PayCenter' }">
         <li>
           <span>支付方式</span><span class="right way">支付宝支付</span
@@ -30,6 +27,14 @@ export default {
   data() {
     return {
       checked: true
+    }
+  },
+  methods: {
+    nextqiye() {
+      this.$router.push({ name: 'Qiye' })
+    },
+    toCoffer() {
+      this.$router.push({ name: 'Coffer' })
     }
   }
 }
